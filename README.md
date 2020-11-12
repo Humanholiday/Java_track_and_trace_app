@@ -1,3 +1,3 @@
-# csc8427-track-and-trace
+## Specification
 
-Base Java code for a track and trace system, to be developed by students as part of their assessment for CSC8427 - Introduction to Software Engineering
+https://epic.ncl.ac.uk/modules/csc8011/coursework/
