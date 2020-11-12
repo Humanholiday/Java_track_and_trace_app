@@ -1,3 +1,3 @@
 ## Specification
 
-https://epic.ncl.ac.uk/modules/csc8011/coursework/
+https://ncl.instructure.com/courses/33051/pages/assessment-introduction
