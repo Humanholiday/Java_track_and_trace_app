@@ -1,69 +1,90 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
-public class User {
+public class User
+{
     //Attributes
     private String name;
-    private int dob;
+    private LocalDate dob;
     private String emailAddress;
-    private int phoneNumber;
+    private String phoneNumber;
     private int age;
 
-    public User(String name, int dob, String emailAddress, int phoneNumber, int age)
+    //constructor
+
+    public User(String name, LocalDate dob, String emailAddress, String phoneNumber)
     {
         this.name = name;
         this.dob = dob;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-        this.age = age;
+        // CALCULATES THE YEARS BETWEEN DOB AND THE CURRENT DATE AND STORES AS AGE VARIABLE
+        this.age = Period.between(dob, LocalDate.now()).getYears(); //JACK
     }
+
+    // methods
+
+    // utility methods
+
+    //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html        //VICKY
+// Date formatter so we can format dob in correct format
+    private final DateTimeFormatter formatter =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    // getters
 
     public String getName()
     {
-        return name;
+        return this.name;
     }
 
-    public int getDob()
+    public LocalDate getDob()
     {
-        return dob;
+        return this.dob;
     }
 
     public String getEmailAddress()
     {
-        return emailAddress;
+        return this.emailAddress;
     }
 
-    public int getPhoneNumber()
+    public String getPhoneNumber()
     {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     public int getAge()
     {
-        LocalDate today = LocalDate.now();
-        LocalDate dob = LocalDate.of(); //need to research age calculator initialisation
-        Period p = Period.between(birthday, today);
-        return age;
+        //DONT THINK THIS IS NEEDED AS IT RE ASSIGNS THE AGE DEPENDING ON THE CURRENT DATE WHEN THE METHOD IS CALLED
+        // I THINK THAT WE ONLY NEED TO KNOW THE AGE ON THE DATE THE EVENT OCCURRED, IN WHICH CASE IT IS REDUNDANT - JH
+        //this.age = Period.between(this.dob, LocalDate.now()).getYears();
+
+        return this.age;
     }
 
-    public void displayUser()
+    // views
+
+    public String displayUser()
     {
-        System.out.println
-                (
-        "Name:  " + this.name +
-                "\n\tDate of Birth:" + this.dob +
-                "\n\tEmail: " + this.emailAddress +
-                "\n\tContact Number: " + this.phoneNumber +
-                "\n\tAge: " + this.age
-                );
+        // Print out user details in required format
+        return String.format("Name: %s\n\t" +     // %s represents a string
+                        "Date of Birth: %s\n\t" +
+                        "Email: %s\n\t" +
+                        "Contact Number: %s\n\t" +
+                        "Age: %d",                            // %d represents a decimal
+                name,
+                dob.format(formatter),
+                emailAddress,
+                phoneNumber,
+                age);
     }
 
-    public void displayUserShortHand()
+    public String displayUserShortHand()
     {
-        System.out.println
-                (this.name + "|" + this.phoneNumber);
+        return
+                this.name + " | Contact Number " + this.phoneNumber;
     }
-
 
 }
 

@@ -1,45 +1,77 @@
-import java.time.*; // Java package to work with the date and time API
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Event
 {
     // Attributes
-    private int eventID;
+
+    private long eventID;
     private User user;
     private LocalDate eventDate;
+    private LocalTime eventTime;
     private int partyNumber;
     private Establishment establishment;
 
     // Constructors
-    public Event (User user, LocalDate date, int partyNumber, Establishment establishment)
+
+    public Event (User user, LocalDate date, LocalTime time, int partyNumber, Establishment establishment)
     {
-        this.eventID =                  // need to research way to auto generate unique event
+        //CALLS PRIVATE GETID() METHOD -JH
+        this.eventID = getID();
         this.user = user;
         this.eventDate = date;
+        this.eventTime = time;
         this.partyNumber = partyNumber;
         this.establishment = establishment;
     }
+
+    // USES CONSTRUCTOR OVERLOADING TO ASSIGN CURRENT DATE AND TIME IF THOSE VALUES ARE NOT PRESENT IN CONSTRUCTOR - JH
 
     public Event(User user, Integer partyNumber, Establishment establishment)
     {
-        this.eventID =                         // need to research way to auto generate unique event
-        this.user = user;
-        this.partyNumber = partyNumber;
-        this.establishment = establishment;
+        this(user, LocalDate.now(), LocalTime.now(), partyNumber, establishment);
     }
 
+
+    // utility methods
+
+    //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html        //VICKY
+// Date formatter so we can format dob in correct format
+    private final DateTimeFormatter formatter =
+            DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+
+    // method to generate a unique 10 digit ID using the current time in milliseconds limited to 10 digits - JH
+    // unless it hasn't changed since the last id in which case it adds 1
+    private static final long LIMIT = 10000000000L;     //JACK
+    private static long last = 0;
+
+    private static long getID()
+    {
+        // 10 digits.
+        long id = System.currentTimeMillis() % LIMIT;
+        if ( id <= last ) {
+            id = (last + 1) % LIMIT;
+        }
+        return last = id;
+    }
+
+
     // methods
+
+    //getters
+
     public User getUser()
     {
         return this.user;
     }
-    public String getEventDate()
+    public LocalDate getEventDate()
     {
         return this.eventDate;
     }
-    public String getEventTime()
+    public LocalTime getEventTime()
     {
         return this.eventTime;
     }
@@ -52,6 +84,8 @@ public class Event
         return this.establishment;
     }
 
+    //setters
+
     public void setEventID(int eventID) { this.eventID = eventID; }
     public void setEventDate(LocalDate eventDate) { this.eventDate = eventDate; }
     public void setPartyNumber(int partyNumber) { this.partyNumber = partyNumber; }
@@ -61,24 +95,32 @@ public class Event
         this.user = user;
     }
 
-    public void setEstablishmnet(Establishment establishmnet)
+    public void setEstablishment(Establishment establishment)
     {
-        this.establishment = establishmnet;
+        this.establishment = establishment;
     }
 
-    public void printEvent()
+    //views
+
+    public String displayEvent()
     {
-        System.out.print
-                (
-                        "Event ID:  " + this.eventID +
-                                "\n\tRecorded User" +
-                                this.user.printUser() +    // tbc reference User method
-                                "\n\tDate: " + this.eventDate +
-                                "\n\tTime: " +                   // check with Mike
-                                "\n\tParty Size: " + partyNumber +
-                                "\n\tEstablishment" +
-                                this.establishment.printEstablishment()    // tbc reference User method
-                );
+        return String.format("Event ID: %d \n" +
+                        "\tRecorded User\n \t\tName: %s\n \t\tDate of Birth: %s\n \t\tEmail: %s\n  \t\tContact Number: %s\n \t\tAge %d\n" +
+                        "\tEvent Date: %s\n \tEvent Time: %s\n \tParty Size: %d\n" +
+                        "\tEstablishment:\n \t\tName %s\n \t\tAddress: %s",
+                //eventID,
+                eventID,
+                user.getName(),
+                user.getDob(),
+                user.getEmailAddress(),
+                user.getPhoneNumber(),
+                user.getAge(),
+                eventDate.format(formatter),
+                eventTime,
+                partyNumber,
+                establishment.getName(),
+                establishment.getAddress()
+        );
 
     };
 
