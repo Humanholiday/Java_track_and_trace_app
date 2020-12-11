@@ -29,6 +29,8 @@ public class User
 
     //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html        //VICKY
 // Date formatter so we can format dob in correct format
+    // Researched Date formatter so we can format dob in correct format, link to webpage below - VW
+    //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
     private final DateTimeFormatter formatter =
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -68,6 +70,7 @@ public class User
     public String displayUser()
     {
         // Print out user details in required format
+        // Used String.format to create a sting that can be declared in a System.out.println in order to print the information from User in the correct format - VW
         return String.format("Name: %s\n\t" +     // %s represents a string
                         "Date of Birth: %s\n\t" +
                         "Email: %s\n\t" +
