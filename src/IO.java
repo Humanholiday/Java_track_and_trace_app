@@ -8,13 +8,16 @@ public class IO
     public IO
     {
 
-        try {
+        try
+        {
             String csvFile = "data/establishments.csv"; //moved the csv to this location within the project
 
             FileReader fileReader = new FileReader(csvFile);
 
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
 
             System.out.println(e.getStackTrace());
@@ -22,10 +25,12 @@ public class IO
 
         Establishment[] establishments = new Establishment[4];
 
-        for (int i = 0; i < establishments.length; i++) {
+        for (int i = 0; i < establishments.length; i++)
+        {
             nextLine = bufferedReader.readLine();
 
-            if (nextLine != null) {
+            if (nextLine != null)
+            {
                 String[] strings = nextLine.split(",");
 
                 String name = strings[0];
