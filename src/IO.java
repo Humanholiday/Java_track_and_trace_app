@@ -40,7 +40,6 @@ public class IO
 
                 establishments[i] = new establishments(name, firstAddressLine, postcode, occupancy);
             }
-
         }
     }
 }
