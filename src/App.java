@@ -31,6 +31,14 @@ public class App {
                         2633
                 );
 
+
+        // sample of Establishments to save in out CSV File
+        Establishment[] Establishments = new Establishment[][3];
+        Establishment[0] = new Establishment("Some Coffee House", "1 King Street", "FA1 3KE,", 5);
+        Establishment[1] = new Establishment("Some Restaurant Place", "1 Queen Street", "FA2 3KE", 5);
+        Establishment[2] = new Establishment("Some Book Place", "1 Regal Street", "FA4 3KE", 20);
+        Establishment estab = new Establishment("Harry Potters House", new String[]{"1 Privet Drive","NE1 4YU"},2); System.out.println(estab.getEstablishmentDetails());
+
 //        Establishment FiveSausage = new Establishment      // NEED TO INVESTIGATE HOW TO ADD STRING[] AS CONSTRUCTOR
 //                (
 //                        "The Five Sausage Arena",

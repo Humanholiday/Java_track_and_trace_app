@@ -5,12 +5,12 @@ public class Establishment
     private String name;
     private String firstLineAddress;
     private String postCode;
-    private long maxOccupancy;
+    private Integer maxOccupancy;
     private String address;
 
 
     // Constructors
-    public Establishment(String name, String firstLineAddress, String postCode, long maxOccupancy)
+    public Establishment(String name, String firstLineAddress, String postCode, Integer maxOccupancy)
     {
         this.name = name;
         this.firstLineAddress = firstLineAddress;
@@ -37,7 +37,7 @@ public class Establishment
 
     //getters
 
-    public String getName()
+    public  String getName()
     {
         return this.name;
     }
@@ -47,9 +47,18 @@ public class Establishment
         return this.address;
     }
 
-    public long getMaxOccupancy()
+    public Integer getMaxOccupancy()
     {
         return this.maxOccupancy;
+    }
+
+    public String getPostcode()
+    {
+        return this.postCode;
+    }
+    public String getFirstLineAddress()
+    {
+        return this.firstLineAddress;
     }
 
     //views
