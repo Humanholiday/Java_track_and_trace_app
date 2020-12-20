@@ -126,25 +126,21 @@ public class Controller
 
         Event[] event = new Event[];
 
-//        for (int i = 0; i < event.length; i++)
-//        {
-//            nextLine = bufferedReader.readLine();
-//
-//            if (nextLine != null)
-//            {
-//                String[] strings = nextLine.split(",");
-//
-//                String name = strings[0];
-//                String firstAddressLine = strings[1];
-//                String postcode = strings[2];
-//                String occupancy = strings[3];
-//
-//                //need to convert occupancy to an Integer before addding as parameter below
-//
-//                event[i] = new Event();
-//            }
-//        }
-//        return event;
-//    }
+        for (int i = 0; i < event.length; i++)
+        {
+            nextLine = bufferedReader.readLine();
+
+            if (nextLine != null)
+            {
+                String[] strings = nextLine.split(",");
+
+                long Event = long[0];
+                String User = String [1];
+
+                event[i] = new Event();
+            }
+        }
+        return event;
+    }
 }
 
