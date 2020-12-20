@@ -112,7 +112,6 @@ public class Controller {
 //        }
 //
 //        Event[] event = new Event[];
-
 //        for (int i = 0; i < event.length; i++)
 //        {
 //            nextLine = bufferedReader.readLine();
@@ -165,6 +164,5 @@ public class Controller {
     }
 
     }
-
 
 
