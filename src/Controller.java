@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -89,41 +90,39 @@ public class Controller {
     }
 
     //retrieve the events from the csv
-//    public Event[] getEvent() {
-//
-//        try {
-//            String csvFile = "data/event.csv"; //moved the csv to this location within the project
-//
-//            FileReader fileReader = new FileReader(csvFile);
-//
-//            BufferedReader bufferedReader = new BufferedReader(fileReader);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//
-//            System.out.println(e.getStackTrace());
-//        }
-//
-//        Event[] event = new Event[];
-//        for (int i = 0; i < event.length; i++)
-//        {
-//            nextLine = bufferedReader.readLine();
-//
-//            if (nextLine != null)
-//            {
-//                String[] strings = nextLine.split(",");
-//
-//                String name = strings[0];
-//                String firstAddressLine = strings[1];
-//                String postcode = strings[2];
-//                String occupancy = strings[3];
-//
-//                //need to convert occupancy to an Integer before addding as parameter below
-//
-//                event[i] = new Event();
-//            }
-//        }
-//        return event;
-//    }
+        public static void getEvent() {
+
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+
+        assert csvText != null;
+
+        ArrayList<Event> events = new ArrayList<Event>();
+
+        for (String line : csvText) {
+
+            if (line != null) {
+                String[] strings = line.split(",");
+
+                String eventID = strings[0];
+                String username = strings[1];
+                String dob = strings[2];
+                String email = strings [3];
+                String contactNumber = strings [4];
+                Integer age = Integer.parseInt(strings[5]);
+                String eventDate = strings[6];
+                String eventTime = strings[7];
+                String partySize = strings[8];
+                String establishmentName = strings[9];
+                String firstLineAddress = strings[10];
+                String postcode = strings[11];
+                Integer maxOccupancy = Integer.parseInt(strings[12]);
+
+
+
+                Event event = new Event(eventID, username, dob, email, contactNumber, age, eventDate, eventTime, partySize, establishmentName, firstLineAddress, postcode, maxOccupancy);
+
+                events.add(event);
+            }
 
     //****** NEW - METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE - JH
 
