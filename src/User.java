@@ -9,7 +9,7 @@ public class User
     private LocalDate dob;
     private String emailAddress;
     private String phoneNumber;
-    private int age;
+    private Integer age;
 
     //constructor
 

@@ -46,7 +46,10 @@ public class Establishment
     {
         return this.address;
     }
-
+    public String[] getAddressArray()
+    {
+        return new String[]{this.firstLineAddress, this.postCode};
+    }
     public Integer getMaxOccupancy()
     {
         return this.maxOccupancy;

@@ -4,38 +4,34 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    //Attributes
+    // DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
 
-    //constructor
-
+//        // Attributes
+//
+// private String CSV;
+//
+//   // Constructors
+//
+//    public Controller(String establishmentCSVFileURI)
+//    {
+//        this.CSV = establishmentCSVFileURI;
+//    }
+//
+//    public Controller(){}
 
     //methods
 
-    //add new establishemnts to csv
+    //add new establishment to csv
 
     public static boolean addEstablishment(Establishment establishment) throws IOException {
 
         String fileName = "data/establishments.csv";
 
-//        try {
+
             if (notDuplicate(establishment.getName(), fileName)) {
 
                 FileWriter csvWriter = new FileWriter(fileName, true);
-//
-//            // create "header" row first
-//            csvWriter.append("name");
-//            csvWriter.append(",");               // comma separators
-//            csvWriter.append("firstAddressLine");
-//            csvWriter.append(",");
-//            csvWriter.append("postcode");
-//            csvWriter.append(",");
-//            csvWriter.append("occupancy");
-//            csvWriter.append("\n");             // new line character
 
-                // create a new line in the file for each Establishment
-
-//            for (int i = 0; i < Establishments.length; i++) {
-//                Establishment Establishments = Establishment[i];
 
                 csvWriter.append(establishment.getName());
                 csvWriter.append(",");
@@ -45,17 +41,11 @@ public class Controller {
                 csvWriter.append(",");
                 csvWriter.append(establishment.getMaxOccupancy().toString());
                 csvWriter.append("\n");
-//            }
+
 
                 csvWriter.flush();
                 csvWriter.close();
 
-//            catch(Exception e)         // Catch ANY Exception
-//                {
-//                    System.out.println(e.getMessage());     // Print the Exception message
-//                    System.out.println(e.getStackTrace());  // Print the Stack Trace
-//                    System.exit(1);                         // (Optionally) Exit (with code 1 to indicate an error has occurred)
-//                }
                 return true;
             }
 
@@ -66,10 +56,11 @@ public class Controller {
 
     //add new events to csv
 
+    /// ADD EVENTS METHOD CODE GOES HERE
+
     //retrieve the establishments from the csv as eastablishment object
 
-
-    public static void getEstablishments() {
+    public static ArrayList<Establishment> getEstablishments() {
 
         ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
 
@@ -94,6 +85,7 @@ public class Controller {
                 establishments.add(establishment);
             }
         }
+        return establishments;
     }
 
     //retrieve the events from the csv
@@ -133,7 +125,7 @@ public class Controller {
 //        return event;
 //    }
 
-    //****** NEW - METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE
+    //****** NEW - METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE - JH
 
     private static boolean notDuplicate(String input, String filename) throws IOException {
 
@@ -162,7 +154,6 @@ public class Controller {
         // RETURN TRUE IF THE EVENT ID'S ARE DIFFERENT
         return true;
     }
-
-    }
+}
 
 

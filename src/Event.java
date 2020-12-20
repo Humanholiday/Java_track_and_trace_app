@@ -7,7 +7,9 @@ public class Event
 {
     // Attributes
 
-    private long eventID;
+    // System.identityHashCode(yourObject) gives the hash code of the event as an integer.   -JH
+    // hashCode() gives the same value but is easier to override
+    private Integer eventID = System.identityHashCode(this);
     private User user;
     private LocalDate eventDate;
     private LocalTime eventTime;
@@ -18,8 +20,6 @@ public class Event
 
     public Event (User user, LocalDate date, LocalTime time, int partyNumber, Establishment establishment)
     {
-        //CALLS PRIVATE GETID() METHOD -JH
-        this.eventID = getID();
         this.user = user;
         this.eventDate = date;
         this.eventTime = time;
@@ -45,33 +45,28 @@ public class Event
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
-    // method to generate a unique 10 digit ID using the current time in milliseconds limited to 10 digits - JH
-    // unless it hasn't changed since the last id in which case it adds 1
-    private static final long LIMIT = 10000000000L;     //JACK
-    private static long last = 0;
-
-    private static long getID()
-    {
-        // 10 digits.
-        long id = System.currentTimeMillis() % LIMIT;
-        if ( id <= last ) {
-            id = (last + 1) % LIMIT;
-        }
-        return last = id;
-    }
-
-
     // methods
 
     //getters
-
+    public Event getEvent()
+    {
+        return this;
+    }
     public User getUser()
     {
         return this.user;
     }
-    public LocalDate getEventDate()
+    public Establishment getEstablishment()
     {
-        return this.eventDate;
+        return this.establishment;
+    }
+    public Integer getEventID()
+    {
+        return this.eventID;
+    }
+    public String getEventDate()
+    {
+        return this.eventDate.format(formatter);   //******** NEW - FORMAT DATE
     }
     public LocalTime getEventTime()
     {
@@ -81,10 +76,7 @@ public class Event
     {
         return this.partyNumber;
     }
-    public Establishment getEstablishment()
-    {
-        return this.establishment;
-    }
+
 
     //setters
 
