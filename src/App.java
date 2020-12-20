@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -7,8 +8,7 @@ public class App {
 
     //MAIN METHOD FOR APPLICATION - JH
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
 
 
         //CREATE A USER OBJECT - JH
@@ -31,13 +31,16 @@ public class App {
                         2633
                 );
 
+        System.out.println(Controller.addEstablishment(TwoEgg));
 
-        // sample of Establishments to save in out CSV File
-        Establishment[] Establishments = new Establishment[][3];
-        Establishment[0] = new Establishment("Some Coffee House", "1 King Street", "FA1 3KE,", 5);
-        Establishment[1] = new Establishment("Some Restaurant Place", "1 Queen Street", "FA2 3KE", 5);
-        Establishment[2] = new Establishment("Some Book Place", "1 Regal Street", "FA4 3KE", 20);
-        Establishment estab = new Establishment("Harry Potters House", new String[]{"1 Privet Drive","NE1 4YU"},2); System.out.println(estab.getEstablishmentDetails());
+
+
+//        // sample of Establishments to save in out CSV File
+//        Establishment[] Establishments = new Establishment[][3];
+//        Establishment[0] = new Establishment("Some Coffee House", "1 King Street", "FA1 3KE,", 5);
+//        Establishment[1] = new Establishment("Some Restaurant Place", "1 Queen Street", "FA2 3KE", 5);
+//        Establishment[2] = new Establishment("Some Book Place", "1 Regal Street", "FA4 3KE", 20);
+//        Establishment estab = new Establishment("Harry Potters House", new String[]{"1 Privet Drive","NE1 4YU"},2); System.out.println(estab.getEstablishmentDetails());
 
 //        Establishment FiveSausage = new Establishment      // NEED TO INVESTIGATE HOW TO ADD STRING[] AS CONSTRUCTOR
 //                (
@@ -56,6 +59,8 @@ public class App {
                         400,
                         TwoEgg
                 );
+
+
 
 
         //BELOW ARE VARIOUS METHODS TO TEST THE BEHAVIOUR OF THE CLASSES - JH
