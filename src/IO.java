@@ -4,12 +4,15 @@ public class IO
 {
     // Attributes
     boolean exit = false;
+    //CONTROLLER OBJECT IS ATTRIBUTE OF IO CLASS
     private Controller ioController;
 
 
     // Constructor
+
     public IO()
     {
+        //CREATES CONTROLLER INSTANCE WHEN IO OBJECT IS INSTANTIATED
         this.ioController = new Controller();
     }
 

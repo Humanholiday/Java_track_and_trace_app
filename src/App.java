@@ -31,6 +31,17 @@ public class App {
                         2633
                 );
 
+        //CREATE AN EVENT OBJECT - JH
+
+        Event TheBigOne = new Event
+                (
+                        Jack,
+                        LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30),
+                        400,
+                        TwoEgg
+                );
+
 
         // TEST TO ADD ESTABLISHMENT
 //        System.out.println(Controller.addEstablishment(TwoEgg));
@@ -42,7 +53,6 @@ public class App {
 //        {
 //            System.out.println(establishment.displayEstablishment());
 //        }
-
 
 
 
@@ -60,16 +70,7 @@ public class App {
 //                        4567
 //                );
 
-        //CREATE AN EVENT OBJECT - JH
 
-        Event TheBigOne = new Event
-                (
-                        Jack,
-                        LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30),
-                        400,
-                        TwoEgg
-                );
 
 
 
