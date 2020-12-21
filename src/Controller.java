@@ -117,8 +117,6 @@ public class Controller {
                 String postcode = strings[11];
                 Integer maxOccupancy = Integer.parseInt(strings[12]);
 
-
-
                 Event event = new Event(eventID, username, dob, email, contactNumber, age, eventDate, eventTime, partySize, establishmentName, firstLineAddress, postcode, maxOccupancy);
                 //Not sure why this won't resolve
                 events.add(event);
