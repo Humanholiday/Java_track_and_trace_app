@@ -56,7 +56,7 @@ public class User
         return this.phoneNumber;
     }
 
-    public int getAge()
+    public Integer getAge()
     {
         //DONT THINK THIS IS NEEDED AS IT RE ASSIGNS THE AGE DEPENDING ON THE CURRENT DATE WHEN THE METHOD IS CALLED
         // I THINK THAT WE ONLY NEED TO KNOW THE AGE ON THE DATE THE EVENT OCCURRED, IN WHICH CASE IT IS REDUNDANT - JH
