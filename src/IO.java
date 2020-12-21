@@ -1,22 +1,19 @@
-import java.io.FileNotFoundException;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.Scanner;
 
 public class IO
 {
     // Attributes
     boolean exit = false;
+    private Controller ioController;
 
 
     // Constructor
     public IO()
     {
-
+        this.ioController = new Controller();
     }
 
     // Methods
-
 
 
     // Header for the menu

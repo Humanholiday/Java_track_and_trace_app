@@ -2,32 +2,31 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-public class Controller {
+public final class Controller {
 
-    // DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
+//     DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
 
-//        // Attributes
-//
-// private String CSV;
-//
-//   // Constructors
-//
-//    public Controller(String establishmentCSVFileURI)
-//    {
-//        this.CSV = establishmentCSVFileURI;
-//    }
-//
-//    public Controller(){}
+        // Attributes
+
+ private String CSV;
+
+   // Constructors
+
+    protected Controller(String establishmentCSVFileURI)
+    {
+        this.CSV = establishmentCSVFileURI;
+    }
+
+    protected Controller(){}
 
     //methods
 
     //add new establishment to csv
 
-    public static boolean addEstablishment(Establishment establishment) throws IOException {
+    protected boolean addEstablishment(Establishment establishment) throws IOException {
 
         String fileName = "data/establishments.csv";
 
@@ -59,7 +58,7 @@ public class Controller {
     }
 
 
-    public static boolean addEvent(Event event) throws IOException
+    protected boolean addEvent(Event event) throws IOException
 
     {
         String fileName = "data/events.csv";
@@ -106,7 +105,7 @@ public class Controller {
 
     //retrieve the establishments from the csv as eastablishment object
 
-    public static ArrayList<Establishment> getEstablishments() {
+    protected ArrayList<Establishment> getEstablishments() {
 
         ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
 
@@ -135,7 +134,7 @@ public class Controller {
     }
 
     //retrieve the events from the csv
-        public static ArrayList<Event> getEvent() {
+        protected ArrayList<Event> getEvent() {
 
             ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
 
