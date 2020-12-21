@@ -20,7 +20,7 @@ public class IO
 
 
     // Header for the menu
-    private void printHeader()
+    private void printHeder()
     {
         // Creating the header for our menu
         System.out.println("------------------------------");
@@ -29,7 +29,7 @@ public class IO
     }
 
     // Header for the sub-menu
-    private void printSubHeader()
+    private void printSubHeder()
     {
         // Creating the header for our menu
         System.out.println("------------------------------");
@@ -66,7 +66,7 @@ public class IO
     private void runMenu()
     {
         // Show the header
-        printHeader();
+        printHeder();
 
         // Show the menu unless in exit state
         while (!exit)
@@ -84,7 +84,7 @@ public class IO
     private void runSubMenu ()
     {
         // Show the header
-        printSubHeader();
+        printSubHeder();
 
         // Show the menu unless in exit state
         while (!exit)
@@ -182,7 +182,7 @@ public class IO
                 System.out.print("Goodbye");
                 break;
             default:
-                System.out.print("Error has occurred");
+                System.out.print("Error has occured");
 
         }
     }
@@ -205,7 +205,7 @@ public class IO
                 runMenu();
                 break;
             default:
-                System.out.print("Error has occurred");
+                System.out.print("Error has occured");
 
         }
     }
