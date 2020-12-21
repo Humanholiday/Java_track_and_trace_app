@@ -55,9 +55,51 @@ public class Controller {
         }
     }
 
-    //add new events to csv
 
-    /// ADD EVENTS METHOD CODE GOES HERE
+    public static boolean addEvent(Event event) throws IOException
+
+    {
+        String fileName = "data/events.csv";
+
+        if (notDuplicate(event.getEventID(), fileName)) {
+
+            FileWriter csvWriter = new FileWriter(fileName, true);
+
+            csvWriter.append(event.getEventID().toString());
+            csvWriter.append(",");
+            csvWriter.append(event.getUser().getName());
+            csvWriter.append(",");
+            csvWriter.append(event.getUser().getDob().toString());
+            csvWriter.append(",");
+            csvWriter.append(event.getUser().getEmailAddress());
+            csvWriter.append(",");
+            csvWriter.append(event.getUser().getPhoneNumber());
+            csvWriter.append(",");
+            csvWriter.append(event.getUser().getAge().toString());
+            csvWriter.append(",");
+            csvWriter.append(event.getEventDate());
+            csvWriter.append(",");
+            csvWriter.append(event.getEventTime().toString());
+            csvWriter.append(",");
+            csvWriter.append(event.getEstablishment().getName());
+            csvWriter.append(",");
+            csvWriter.append(event.getEstablishment().getFirstLineAddress());
+            csvWriter.append(",");
+            csvWriter.append(event.getEstablishment().getPostcode());
+            csvWriter.append(",");
+            csvWriter.append(event.getEstablishment().getMaxOccupancy().toString());
+            csvWriter.append("\n");
+
+            csvWriter.flush();
+            csvWriter.close();
+
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }
 
     //retrieve the establishments from the csv as eastablishment object
 
@@ -117,10 +159,8 @@ public class Controller {
                 String postcode = strings[11];
                 Integer maxOccupancy = Integer.parseInt(strings[12]);
 
-
-
                 Event event = new Event(eventID, username, dob, email, contactNumber, age, eventDate, eventTime, partySize, establishmentName, firstLineAddress, postcode, maxOccupancy);
-
+                //Not sure why this won't resolve
                 events.add(event);
             }
 
