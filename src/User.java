@@ -31,7 +31,7 @@ public class User
 // Date formatter so we can format dob in correct format
     // Researched Date formatter so we can format dob in correct format, link to webpage below - VW
     //https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
-    private final DateTimeFormatter formatter =
+    public static DateTimeFormatter formatter =
             DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // getters
