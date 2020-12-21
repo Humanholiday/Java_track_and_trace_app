@@ -64,7 +64,7 @@ public class Controller {
     {
         String fileName = "data/events.csv";
 
-        if (notDuplicate(event.getEventID(), fileName)) {
+        if (notDuplicate(event.getEventID().toString(), fileName)) {
 
             FileWriter csvWriter = new FileWriter(fileName, true);
 
