@@ -1,7 +1,10 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 
 public class Controller {
 
@@ -61,7 +64,7 @@ public class Controller {
     {
         String fileName = "data/events.csv";
 
-        if (notDuplicate(event.getEventID(), fileName)) {
+        if (notDuplicate(event.getEventID().toString(), fileName)) {
 
             FileWriter csvWriter = new FileWriter(fileName, true);
 
@@ -132,37 +135,41 @@ public class Controller {
     }
 
     //retrieve the events from the csv
-        public static void getEvent() {
+        public static ArrayList<Event> getEvent() {
 
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+            ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
 
-        assert csvText != null;
+            assert csvText != null;
 
-        ArrayList<Event> events = new ArrayList<Event>();
+            ArrayList<Event> events = new ArrayList<Event>();
 
-        for (String line : csvText) {
+            for (String line : csvText) {
 
-            if (line != null) {
-                String[] strings = line.split(",");
+                if (line != null) {
+                    String[] strings = line.split(",");
 
-                String eventID = strings[0];
-                String username = strings[1];
-                String dob = strings[2];
-                String email = strings [3];
-                String contactNumber = strings [4];
-                Integer age = Integer.parseInt(strings[5]);
-                String eventDate = strings[6];
-                String eventTime = strings[7];
-                String partySize = strings[8];
-                String establishmentName = strings[9];
-                String firstLineAddress = strings[10];
-                String postcode = strings[11];
-                Integer maxOccupancy = Integer.parseInt(strings[12]);
+                    String eventID = strings[0];
+                    String username = strings[1];
+                    LocalDate dob = LocalDate.parse(strings[2], User.formatter); //
+                    String email = strings[3];
+                    String contactNumber = strings[4];
+                    Integer age = Integer.parseInt(strings[5]);
+                    LocalDate eventDate = LocalDate.parse(strings[6], User.formatter);
+                    LocalTime eventTime = LocalTime.parse(strings[7]);
+                    Integer partySize = Integer.parseInt(strings[8]);
+                    String establishmentName = strings[9];
+                    String firstLineAddress = strings[10];
+                    String postcode = strings[11];
+                    Integer maxOccupancy = Integer.parseInt(strings[12]);
 
-                Event event = new Event(eventID, username, dob, email, contactNumber, age, eventDate, eventTime, partySize, establishmentName, firstLineAddress, postcode, maxOccupancy);
-                //Not sure why this won't resolve
-                events.add(event);
+                    User user = new User(username, dob, email, contactNumber);
+                    Establishment establishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
+                    Event event = new Event(user, eventDate, eventTime, partySize, establishment);
+                    events.add(event);
+                }
             }
+            return events;
+        }
 
     //****** NEW - METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE - JH
 
