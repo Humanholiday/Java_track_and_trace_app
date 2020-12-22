@@ -151,7 +151,7 @@ public final class Controller {
     }
 
     //retrieve the events from the csv
-        protected ArrayList<Event> getEvent() {
+        protected ArrayList<Event> getEvents() {
 
             // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
             ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");

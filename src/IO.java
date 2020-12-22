@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IO
@@ -63,7 +64,7 @@ public class IO
     }
 
     // Method to run the main menu
-    private void runMenu()
+    protected void runMenu()
     {
         // Show the header
         printHeder();
@@ -172,10 +173,10 @@ public class IO
                 runSubMenu();
                 break;
             case 4:
-                // Prints Events
+               printEvents(ioController);
                 break;
             case 5:
-                // Prints Establishments
+                printEstablishments(ioController);
                 break;
             case 6:
                 exit = true;
@@ -196,7 +197,7 @@ public class IO
                 // Records by Establishment
                 break;
             case 2:
-                // Records by date
+                // Records by date4
                 break;
             case 3:
                 // Records by Name
@@ -209,12 +210,27 @@ public class IO
 
         }
     }
-
-
-    public static void main(String[] args)
+    //Print events method
+    protected void printEvents(Controller ioController)
     {
-        IO menu = new IO();
-        menu.runMenu();
+        int i = 1;
+        ArrayList<Event> events = ioController.getEvents();
+        for (Event event:events)
+        {System.out.println(i + "." + "\n" + event.displayEvent() + "\n");
+        i++;
+        }
+    }
+
+    //Print establishments method
+    protected void printEstablishments(Controller ioController)
+    {
+        int i = 1;
+        ArrayList<Establishment> establishments = ioController.getEstablishments();
+        for (Establishment establishment:establishments)
+        {System.out.println(i + "." + "\n" + establishment.displayEstablishment() + "\n");
+        i++;
+        }
 
     }
+
 }

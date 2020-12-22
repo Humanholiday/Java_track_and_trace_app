@@ -4,43 +4,47 @@ import java.time.LocalTime;
 
 // NEW MAIN CLASS CREATED IN ORDER TO RUN TESTS
 
-public class App {
+public class Main {
 
     //MAIN METHOD FOR APPLICATION - JH
 
     public static void main(String[] args) throws IOException {
 
-
-        //CREATE A USER OBJECT - JH
-
-        User Jack = new User
-                (
-                        "Jack Healy",
-                        LocalDate.of(1985, 6, 8) ,
-                        "jackhealy85@gmail.com",
-                        "07515708720"
-                );
-
-        //CREATE AN ESTABLISHMENT OBJECT - JH
-
-        Establishment TwoEgg = new Establishment
-                (
-                        "The Two Egg Arena",
-                        "1263 Sycamore Terrace",
-                        "NE1 7RT",
-                        2633
-                );
-
-        //CREATE AN EVENT OBJECT - JH
-
-        Event TheBigOne = new Event
-                (
-                        Jack,
-                        LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30),
-                        400,
-                        TwoEgg
-                );
+            IO menu = new IO();
+            menu.runMenu();
+//
+//
+//
+//        //CREATE A USER OBJECT - JH
+//
+//        User Jack = new User
+//                (
+//                        "Jack Healy",
+//                        LocalDate.of(1985, 6, 8) ,
+//                        "jackhealy85@gmail.com",
+//                        "07515708720"
+//                );
+//
+//        //CREATE AN ESTABLISHMENT OBJECT - JH
+//
+//        Establishment TwoEgg = new Establishment
+//                (
+//                        "The Two Egg Arena",
+//                        "1263 Sycamore Terrace",
+//                        "NE1 7RT",
+//                        2633
+//                );
+//
+//        //CREATE AN EVENT OBJECT - JH
+//
+//        Event TheBigOne = new Event
+//                (
+//                        Jack,
+//                        LocalDate.of(2020, 12, 10),
+//                        LocalTime.of(12, 30),
+//                        400,
+//                        TwoEgg
+//                );
 
 
         // TEST TO ADD ESTABLISHMENT
