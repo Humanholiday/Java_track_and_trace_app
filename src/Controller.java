@@ -2,41 +2,44 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import  java.util.ArrayList;
 
 
-public class Controller {
+//CONTROLLER CLASS IS FINAL
+public final class Controller {
 
-    // DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
+//     DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
 
-//        // Attributes
-//
-// private String CSV;
-//
-//   // Constructors
-//
-//    public Controller(String establishmentCSVFileURI)
-//    {
-//        this.CSV = establishmentCSVFileURI;
-//    }
-//
-//    public Controller(){}
+        // Attributes
+ private String csv;
+
+   // Constructors
+
+    protected Controller(String establishmentCSVFileURI)
+    {
+        this.csv = establishmentCSVFileURI;
+    }
+
+    protected Controller(){}
+
 
     //methods
 
-    //add new establishment to csv
 
-    public static boolean addEstablishment(Establishment establishment) throws IOException {
 
+    // ADD ESTABLISHMENT TO THE LIST OF ESTABLISHMENTS, THROW IO EXCEPTIONS
+    protected boolean addEstablishment(Establishment establishment) throws IOException {
+
+        //ASSIGN FILENAME VARIABLE
         String fileName = "data/establishments.csv";
 
-
+        //IF THE notDuplicate METHOD RETURNS TRUE DO THIS
             if (notDuplicate(establishment.getName(), fileName)) {
 
+                //CREATE FILEWRITER OBJECT WHICH INCLUDES FILE PATH AND SETS APPEND TO TRUE
                 FileWriter csvWriter = new FileWriter(fileName, true);
 
-
+                //ADD THE DETAILS OF THE ESTABLISHMENT TO THE CSV, FLUSH AND CLOSE THEN RETURN TRUE
                 csvWriter.append(establishment.getName());
                 csvWriter.append(",");
                 csvWriter.append(establishment.getFirstLineAddress()); // UNSURE HOW TO PULL FIRST LINE
@@ -54,20 +57,25 @@ public class Controller {
             }
 
             else{
+                //IF notDuplicate IS FALSE RETURN FALSE
                 return false;
         }
     }
 
 
-    public static boolean addEvent(Event event) throws IOException
-
+    // ADD EVENT TO THE LIST OF EVENTS, THROW IO EXCEPTIONS
+    protected boolean addEvent(Event event) throws IOException
     {
+        //ASSIGN FILENAME VARIABLE
         String fileName = "data/events.csv";
 
+        //IF THE notDuplicate() METHOD RETURNS TRUE DO THIS
         if (notDuplicate(event.getEventID().toString(), fileName)) {
 
+            //CREATE FILEWRITER OBJECT WHICH INCLUDES FILE PATH AND SETS APPEND TO TRUE
             FileWriter csvWriter = new FileWriter(fileName, true);
 
+            //ADD THE DETAILS OF THE EVENT TO THE CSV, FLUSH AND CLOSE THEN RETURN TRUE
             csvWriter.append(event.getEventID().toString());
             csvWriter.append(",");
             csvWriter.append(event.getUser().getName());
@@ -100,54 +108,69 @@ public class Controller {
         }
 
         else{
+            //IF notDuplicate() RETURNS FALSE RETURN FALSE
             return false;
         }
     }
 
     //retrieve the establishments from the csv as eastablishment object
+    protected ArrayList<Establishment> getEstablishments() {
 
-    public static ArrayList<Establishment> getEstablishments() {
-
+        // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
         ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
 
+        //CHECK IF THE ARRAYLIST IS EMPTY
         assert csvText != null;
 
+        //CREATE AN EMPTY ESTABLISHMENTS ARRAYLIST
         ArrayList<Establishment> establishments = new ArrayList<Establishment>();
 
+        //LOOP THROUGH THE STRING ARRAYLIST
         for (String line : csvText) {
 
+            //IF THE CURRENT LINE IS NOT NULL DO THIS, IF IT IS NULL DO NOT EXECUTE
             if (line != null) {
+                //SPLIT THE STRING INTO SEPARATE VALUES, SEPARATE BY COMMAS AND SAVE INTO A STRING ARRAY
                 String[] strings = line.split(",");
 
+                //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
                 String name = strings[0];
                 String firstAddressLine = strings[1];
                 String postcode = strings[2];
                 Integer occupancy = Integer.parseInt(strings[3]);
 
-                //need to convert occupancy to an Integer before addding as parameter below
-
+                //CREATE ESTABLISHMENT OBJECT USING ABOVE VARIABLES
                 Establishment establishment = new Establishment(name, firstAddressLine, postcode, occupancy);
 
+                //ADD ESTABLISHMENT OBJECT TO THE ESTABLISHMENTS ARRAYLIST
                 establishments.add(establishment);
             }
         }
+        //RETURN THE ESTABLISHMENTS ARRAYLIST
         return establishments;
     }
 
     //retrieve the events from the csv
-        public static ArrayList<Event> getEvent() {
+        protected ArrayList<Event> getEvents() {
 
+            // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
             ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
 
+            //CHECK IF THE ARRAYLIST IS EMPTY
             assert csvText != null;
 
+            //CREATE AN EMPTY EVENTS ARRAYLIST
             ArrayList<Event> events = new ArrayList<Event>();
 
+            //LOOP THROUGH THE STRING ARRAYLIST
             for (String line : csvText) {
 
+                //IF THE CURRENT LINE IS NOT NULL DO THIS, IF IT IS NULL DO NOT EXECUTE
                 if (line != null) {
+                    //SPLIT THE STRING INTO SEPARATE VALUES, SEPARATE BY COMMAS AND SAVE INTO A STRING ARRAY
                     String[] strings = line.split(",");
 
+                    //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
                     String eventID = strings[0];
                     String username = strings[1];
                     LocalDate dob = LocalDate.parse(strings[2], User.formatter); //
@@ -162,12 +185,17 @@ public class Controller {
                     String postcode = strings[11];
                     Integer maxOccupancy = Integer.parseInt(strings[12]);
 
+                    //CREATE USER OBJECT
                     User user = new User(username, dob, email, contactNumber);
+                    //CREATE ESTABLISHMENT OBJECT
                     Establishment establishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
+                    //CREATE EVENT OBJECT USING THE 2 OBJECTS ABOVE AND EVENT VARIABLES
                     Event event = new Event(user, eventDate, eventTime, partySize, establishment);
+                    //ADD EVENT OBJECT TO EVENTS ARRAYLIST
                     events.add(event);
                 }
             }
+            //RETURN ARRAYLIST OF EVENTS
             return events;
         }
 
