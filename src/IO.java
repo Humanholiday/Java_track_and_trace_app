@@ -56,7 +56,7 @@ public class IO
     {
         // Creating options for our menu
         System.out.println("\nPlease make a selection");
-        System.out.println("1) Records by Establishment");
+        System.out.println("1) Show users who have visited an establishment");
         System.out.println("2) Records by Date");
         System.out.println("3) Records by Name");
         System.out.println("4) Go Back");
@@ -189,12 +189,13 @@ public class IO
     }
 
     // Method to do something with the sub menu choice
-    private void performSubMenuAction(int subChoice)
+    protected void performSubMenuAction(int subChoice)
     {
         switch (subChoice)
         {
             case 1:
-                // Records by Establishment
+                //Present a list of users who have visited a given establishment
+                printUsersByEstablishment();
                 break;
             case 2:
                 // Records by date4
@@ -210,27 +211,98 @@ public class IO
 
         }
     }
+
     //Print events method
-    protected void printEvents(Controller ioController)
+    private void printEvents(Controller ioController)
     {
+        // initialise an integer for numbering the list
         int i = 1;
+
+        //save an arraylist of events objects using the controllers getEvents() method
         ArrayList<Event> events = ioController.getEvents();
+
+        //loop through the events arraylist and for each event do this-
         for (Event event:events)
-        {System.out.println(i + "." + "\n" + event.displayEvent() + "\n");
-        i++;
+        {
+            //print out a numbered displayEvent() string
+            System.out.println(i + "." + "\n" + event.displayEvent() + "\n");
+
+            // increment the integer
+             i++;
         }
     }
 
     //Print establishments method
-    protected void printEstablishments(Controller ioController)
+    private void printEstablishments(Controller ioController)
     {
+        // initialise an integer for numbering the list
         int i = 1;
+
+        //save an arraylist of establishment objects using the controllers method
         ArrayList<Establishment> establishments = ioController.getEstablishments();
+
+        //loop through the events arraylist and for each event do this-
         for (Establishment establishment:establishments)
-        {System.out.println(i + "." + "\n" + establishment.displayEstablishment() + "\n");
-        i++;
+        {
+            //print out a numbered displayEstablishment() string
+            System.out.println(i + "." + "\n" + establishment.displayEstablishment() + "\n");
+
+            // increment the integer
+            i++;
         }
 
     }
+
+    // Print users who have visited a given establishment
+    private void printUsersByEstablishment()
+    {
+
+        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+                                             // this tells the scanner object to get its information from the console (System.in)
+
+        //try and catch
+        try
+        {
+            System.out.println("Enter establishment name:");// Print instruction for user
+            String rawEstablishment = in.nextLine();// get the next line the user types and store in a variable
+            String establishment = rawEstablishment.trim(); //trim whitespace from beginning and end of the string
+
+            //pass the user entered establishment string and the ioController instance into the controllers filter method
+            //save the returned collection of users in an ArrayList
+            ArrayList<User> users = ioController.filterEventByEstablishment(establishment, ioController);
+
+            // initialise an integer for numbering the list
+            int i = 1;
+
+            //if the ArrayList of users is not empty do this -
+            if(!users.isEmpty())
+            {
+                //loop through the users in the arraylist and do this for each user
+                for (User user : users) {
+
+                    //print out a numbered displayUser() string
+                    System.out.println(i + "." + "\n" + user.displayUser() + "\n");
+
+                    // increment the integer
+                    i++;
+                }
+            }
+
+            // if the ArrayList of users is empty do this -
+            else
+            {
+                //print this message
+                System.out.println("There are no users saved for this establishment.");
+            }
+        }
+
+        // for caught exceptions do this
+        catch (Exception e)
+        {
+            System.out.println("\nInvalid entry, please start again -");
+        }
+
+    }
+
 
 }
