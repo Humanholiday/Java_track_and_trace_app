@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -164,10 +167,10 @@ public class IO
         switch (choice)
         {
             case 1:
-                // Record an Event
+                newEvent();
                 break;
             case 2:
-                // Add an establishment
+                // Record an establishment
                 break;
             case 3:
                 runSubMenu();
@@ -303,6 +306,166 @@ public class IO
         }
 
     }
+
+    protected void newEvent()
+    {
+
+        // Set up a new scanner to read the input from the console
+        Scanner scanner = new Scanner(System.in);
+
+        // Set up the variables to store the results of the user input
+        String name = "";
+        //String dob = "";
+        LocalDate DateOfBirth = LocalDate.parse("1900-01-01");
+        String email = "";
+        String contactNumber = "";
+        //Integer age = -1;         //Don't need to enter this as it is calculated?
+        String eventDate = "";
+        String eventTime = "";
+        Integer partySize = -1;
+        String establishmentName = "";
+        String firstLineAdd = "";
+        String postCode = "";
+        Integer occ = -1;
+
+        // Get the user name from user input
+        System.out.println("Enter lead party member name: ");
+        String user = scanner.nextLine();
+        name = user;
+
+        // Get the dob from user input
+        //System.out.println("Enter dob in format yyyy-mm-dd: ");
+        //String dateOfBirth = scanner.nextLine();
+        //dob = dateOfBirth;
+        //LocalDate localDateDOB = LocalDate.parse(dob);      // Convert the string dob to a local date
+
+        // Get the dob from user input and validate dob is not in the future
+        LocalDate dob = LocalDate.parse("2000-12-10");
+
+        LocalDate today = LocalDate.now();
+
+        System.out.println("Enter dob in format yyyy-mm-dd: ");
+
+        do
+        {
+
+
+            if (scanner.hasNext())
+            {
+                dob = LocalDate.parse(scanner.nextLine());
+            }
+
+            if (dob.isAfter(today))
+            {
+                System.out.println("Date of birth is in the future, please re-enter date of birth");
+            }
+        }
+
+        while (dob.isAfter(today));
+
+
+        // Get the email address from user input and validate it contains an @
+        System.out.println("Enter email address: ");
+
+        String emailAdd = "";
+
+        do
+        {
+            if (scanner.hasNext())
+            {
+                emailAdd = scanner.nextLine();
+            }
+            if (!emailAdd.contains("@"))
+            {
+                System.out.println("The email address should contain an @ character, please re-enter");
+            }
+        }
+        while (!emailAdd.contains("@"));
+
+        email = emailAdd;
+
+        // Get the contact number from user input (with validation of an 11 digit number)
+        System.out.println("Enter contact number: ");
+
+        String tel = "";
+
+        do
+        {
+            if (scanner.hasNext())
+            {
+                tel = scanner.nextLine();
+            }
+            if (tel.length() != 11)
+            {
+                System.out.println("The contact number must be 11 digits in length, please re-enter contact number");
+            }
+        }
+        while (tel.length() != 11);
+
+        contactNumber = tel;
+
+        // Get the event date from user input
+        System.out.println("Enter event date in format yyyy-mm-dd: ");
+        String dateOfEvent = scanner.nextLine();
+        eventDate = dateOfEvent;
+        LocalDate localDateEventDate = LocalDate.parse(eventDate);   // Convert the string dob to a local date
+
+        // Get the event time from user input
+        System.out.println("Enter event time in format 00:00: ");
+        String timeOfEvent = scanner.nextLine();
+        eventTime = timeOfEvent;
+        LocalTime localTimeOfEvent = LocalTime.parse(eventTime);
+
+        // Get the establishment name from user input
+        System.out.println("Enter Establishment Name: ");
+        String estabName = scanner.nextLine();
+        establishmentName = estabName;
+
+        // Get the first line of the establishment address from user input
+        System.out.println("Enter First Line Address: ");
+        String firstLineAddress = scanner.nextLine();
+        firstLineAdd = firstLineAddress;
+
+        // Get the establishment postcode from user input
+        System.out.println("Enter Postcode: ");
+        String postcode = scanner.nextLine();
+        postCode = postcode;
+
+        // Get the occupancy of the establishment - this is an int - from user input
+        System.out.println("Enter establishment occupancy: ");
+        Integer occupancy = scanner.nextInt();
+        occ = occupancy;
+
+        // Get the party size - this is an int - from user input
+        System.out.println("Enter party size: ");
+        Integer sizeOfParty = scanner.nextInt();
+        partySize = sizeOfParty;
+
+        // Add variables to user constructor
+        User newUser = new User(name, dob, email, contactNumber);
+
+        // Add variables to establishment constructor
+        Establishment newEstablishment = new Establishment(establishmentName, firstLineAdd, postCode, occ);
+
+        // Add variables to event constructor
+        Event newEvent = new Event (newUser, localDateEventDate, localTimeOfEvent, partySize, newEstablishment);
+
+        // Create a new controller object and try to add the new establishment to the establishments.csv
+        Controller controller = new Controller();
+        try
+        {
+            controller.addEvent(newEvent);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        // Message to the user to tell them that a new event has been added
+        System.out.println("New event for " + name + " on " + dateOfEvent + " at " + establishmentName + " for " + partySize + " people has now been added");
+
+
+    }
+
 
 
 }
