@@ -2,11 +2,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import  java.util.ArrayList;
+import java.util.ArrayList;
 
 
 //CONTROLLER CLASS IS FINAL
-public final class Controller {
+public final class Controller
+{
 
 //     DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
 
@@ -228,6 +229,32 @@ public final class Controller {
         // RETURN TRUE IF THE EVENT ID'S ARE DIFFERENT
         return true;
     }
+
+    // method to take a user inputted establishment and return a collection of users who have visited that establishment
+    protected ArrayList<User> filterEventByEstablishment(String estabName, Controller ioController)
+    {
+        //save an arraylist of all the saved event objects using the controllers getEvents() method
+        ArrayList<Event> events = ioController.getEvents();
+
+        //initialise an empty ArrayList of user objects
+        ArrayList<User> users = new ArrayList<User>();
+
+        // for each event in the events ArrayList do this -
+        for (Event event:events)
+        {
+            //if the events establishment matches the user inputted establishment after ignoring case do this
+            if(event.getEstablishment().getName().equalsIgnoreCase(estabName)) {
+
+                //add the user to the users ArrayList
+                users.add(event.getUser());
+
+            }
+        }
+
+        //return the collection of users
+        return users;
+    }
+
 }
 
 

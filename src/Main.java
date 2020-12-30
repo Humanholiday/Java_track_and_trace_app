@@ -1,6 +1,4 @@
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 // NEW MAIN CLASS CREATED IN ORDER TO RUN TESTS
 
@@ -8,13 +6,20 @@ public class Main {
 
     //MAIN METHOD FOR APPLICATION - JH
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException
+    {
 
             IO menu = new IO();
             menu.runMenu();
-//
-//
-//
+
+    }
+
+
+    // DEBUG METHOD FOR APPLICATION
+
+    public static void debug()
+    {
+
 //        //CREATE A USER OBJECT - JH
 //
 //        User Jack = new User
@@ -75,9 +80,6 @@ public class Main {
 //                );
 
 
-
-
-
         //BELOW ARE VARIOUS METHODS TO TEST THE BEHAVIOUR OF THE CLASSES - JH
 
 //        System.out.println(Jack.displayUser());
@@ -100,38 +102,5 @@ public class Main {
 
 
 
-
-         //****** - CREATE EVENTS.CSV HEADER ROW
-
-                    // create "header" row first
-//            csvWriter.append("Event ID");
-//            csvWriter.append(",");               // comma separators
-//            csvWriter.append("User Name");
-//            csvWriter.append(",");
-//            csvWriter.append("Date of Birth");
-//            csvWriter.append(",");
-//            csvWriter.append("Email");
-//            csvWriter.append(",");
-//            csvWriter.append("Contact Number");
-//            csvWriter.append(",");
-//            csvWriter.append("Age");
-//            csvWriter.append(",");
-//            csvWriter.append("Event Date");
-//            csvWriter.append(",");
-//            csvWriter.append("Event Time");
-//            csvWriter.append(",");
-//            csvWriter.append("Party Size");
-//            csvWriter.append(",");
-//            csvWriter.append("Establishment Name");
-//            csvWriter.append(",");
-//            csvWriter.append("FirstLine Address");
-//            csvWriter.append(",");
-//            csvWriter.append("Postcode");
-//            csvWriter.append(",");
-//            csvWriter.append("Max Occupancy");
-//            csvWriter.append("\n");             // new line character
-//
-//            csvWriter.flush();
-//            csvWriter.close();
     }
 }
