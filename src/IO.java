@@ -171,6 +171,7 @@ public class IO
                 break;
             case 2:
                 // Record an establishment
+                newEstablishment();
                 break;
             case 3:
                 runSubMenu();
@@ -463,9 +464,56 @@ public class IO
         // Message to the user to tell them that a new event has been added
         System.out.println("New event for " + name + " on " + dateOfEvent + " at " + establishmentName + " for " + partySize + " people has now been added");
 
-
     }
 
+    protected void newEstablishment()
+    {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Set up the variables to store the results of the establishment
+        String establishmentName = "";
+        String firstLineAdd = "";
+        String postCode = "";
+        Integer occ = -1;
+
+        // Get the establishment name from user input
+        System.out.println("Enter Establishment Name: ");
+        String estabName = scanner.nextLine();
+        establishmentName = estabName;
+
+        // Get the first line of the establishment address from user input
+        System.out.println("Enter First Line Address: ");
+        String firstLineAddress = scanner.nextLine();
+        firstLineAdd = firstLineAddress;
+
+        // Get the establishment postcode from user input
+        System.out.println("Enter Postcode: ");
+        String postcode = scanner.nextLine();
+        postCode = postcode;
+
+        // Get the occupancy of the establishment - this is an int - from user input
+        System.out.println("Enter establishment occupancy: ");
+        Integer occupancy = scanner.nextInt();
+        occ = occupancy;
+
+        // Add variables to establishment constructor
+        Establishment newEstablishment = new Establishment(establishmentName, firstLineAdd, postCode, occ);
+
+        // Create a new controller object and try to add the new establishment to the establishments.csv
+        Controller controller = new Controller();
+        try
+        {
+            controller.addEstablishment(newEstablishment);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        // Message to the user to tell them that a new event has been added
+        System.out.println("New establishment, " + establishmentName + ", has been added");
+
+    }
 
 
 }
