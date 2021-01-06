@@ -328,7 +328,7 @@ public class Main {
 
 
 
-        //LOOP THROUGH USER ARRAY AND PRINT DISPLAY EACH USER
+        //LOOP THROUGH USERS ARRAY AND PRINT DISPLAY EACH USER
         for(int i = 0; i < users.length; i++)
         {
             try
@@ -341,7 +341,7 @@ public class Main {
 
         }
 
-        //LOOP THROUGH USER ARRAY AND PRINT DISPLAY EACH ESTABLISHMENT
+        //LOOP THROUGH ESTABLISHMENTS ARRAY AND PRINT DISPLAY EACH ESTABLISHMENT
         for(int i = 0; i < establishments.length; i++)
         {
             try
@@ -353,7 +353,7 @@ public class Main {
 
         }
 
-        //LOOP THROUGH EVENTS ARRAY AND PRINT DISPLAY EACH EVENT
+        //LOOP THROUGH EVENTS ARRAY AND PRINT EACH EVENT
         for(int i = 0; i < events.length; i++)
         {
             try

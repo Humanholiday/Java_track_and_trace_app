@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -259,56 +260,7 @@ public class IO
 
     }
 
-    // Print users who have visited a given establishment
-    private void printUsersByEstablishment()
-    {
 
-        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
-                                             // this tells the scanner object to get its information from the console (System.in)
-
-        //try and catch
-        try
-        {
-            System.out.println("Enter establishment name:");// Print instruction for user
-            String rawEstablishment = in.nextLine();// get the next line the user types and store in a variable
-            String establishment = rawEstablishment.trim(); //trim whitespace from beginning and end of the string
-
-            //pass the user entered establishment string and the ioController instance into the controllers filter method
-            //save the returned collection of users in an ArrayList
-            ArrayList<User> users = ioController.filterEventByEstablishment(establishment, ioController);
-
-            // initialise an integer for numbering the list
-            int i = 1;
-
-            //if the ArrayList of users is not empty do this -
-            if(!users.isEmpty())
-            {
-                //loop through the users in the arraylist and do this for each user
-                for (User user : users) {
-
-                    //print out a numbered displayUser() string
-                    System.out.println(i + "." + "\n" + user.displayUser() + "\n");
-
-                    // increment the integer
-                    i++;
-                }
-            }
-
-            // if the ArrayList of users is empty do this -
-            else
-            {
-                //print this message
-                System.out.println("There are no users saved for this establishment.");
-            }
-        }
-
-        // for caught exceptions do this
-        catch (Exception e)
-        {
-            System.out.println("\nInvalid entry, please start again -");
-        }
-
-    }
 
     protected void newEvent()
     {
@@ -331,9 +283,9 @@ public class IO
         String postCode = "";
         Integer occ = -1;
 
-        // Get the user name from user input
+        // Get the user name from user input and trim whitespace from beginning and end of entry
         System.out.println("Enter lead party member name: ");
-        String user = scanner.nextLine();
+        String user = scanner.nextLine().trim();
         name = user;
 
         // Get the dob from user input
@@ -347,24 +299,33 @@ public class IO
 
         LocalDate today = LocalDate.now();
 
-        System.out.println("Enter dob in format yyyy-mm-dd: ");
+        boolean dobValid = false;
 
-        do
+        //WHILE DOB IS NOT VALID DO THIS
+        while (!dobValid)
         {
-
-
-            if (scanner.hasNext())
+            //TRY TO SAVE ENTERED DOB AS A LOCALDATE
+            try
             {
-                dob = LocalDate.parse(scanner.nextLine());
+                System.out.println("Enter dob in format yyyy-mm-dd: ");
+                dob = LocalDate.parse(scanner.nextLine().trim());
+            }
+            //CATCH EXCEPTIONS, PRINT MESSAGE AND RESTART LOOP
+            catch (DateTimeParseException e)
+            {
+                System.out.println("\nInvalid date entry, please try again -");
+                continue;
             }
 
+            //IF DOB IS IN FUTURE PRINT MESSAGE AND RESTART LOOP
             if (dob.isAfter(today))
             {
                 System.out.println("Date of birth is in the future, please re-enter date of birth");
+                continue;
             }
+            //IF CODE EXECUTES WITHOUT EXCEPTIONS AND DATE IS NOT IN FUTURE SET TO TRUE TO BREAK OUT OF LOOP
+            dobValid = true;
         }
-
-        while (dob.isAfter(today));
 
 
         // Get the email address from user input and validate it contains an @
@@ -376,7 +337,7 @@ public class IO
         {
             if (scanner.hasNext())
             {
-                emailAdd = scanner.nextLine();
+                emailAdd = scanner.nextLine().trim();
             }
             if (!emailAdd.contains("@"))
             {
@@ -396,7 +357,7 @@ public class IO
         {
             if (scanner.hasNext())
             {
-                tel = scanner.nextLine();
+                tel = scanner.nextLine().trim();
             }
             if (tel.length() != 11)
             {
@@ -409,29 +370,29 @@ public class IO
 
         // Get the event date from user input
         System.out.println("Enter event date in format yyyy-mm-dd: ");
-        String dateOfEvent = scanner.nextLine();
+        String dateOfEvent = scanner.nextLine().trim();
         eventDate = dateOfEvent;
         LocalDate localDateEventDate = LocalDate.parse(eventDate);   // Convert the string dob to a local date
 
         // Get the event time from user input
         System.out.println("Enter event time in format 00:00: ");
-        String timeOfEvent = scanner.nextLine();
+        String timeOfEvent = scanner.nextLine().trim();
         eventTime = timeOfEvent;
         LocalTime localTimeOfEvent = LocalTime.parse(eventTime);
 
         // Get the establishment name from user input
         System.out.println("Enter Establishment Name: ");
-        String estabName = scanner.nextLine();
+        String estabName = scanner.nextLine().trim();
         establishmentName = estabName;
 
         // Get the first line of the establishment address from user input
         System.out.println("Enter First Line Address: ");
-        String firstLineAddress = scanner.nextLine();
+        String firstLineAddress = scanner.nextLine().trim();
         firstLineAdd = firstLineAddress;
 
         // Get the establishment postcode from user input
         System.out.println("Enter Postcode: ");
-        String postcode = scanner.nextLine();
+        String postcode = scanner.nextLine().trim();
         postCode = postcode;
 
         // Get the occupancy of the establishment - this is an int - from user input
@@ -481,17 +442,17 @@ public class IO
 
         // Get the establishment name from user input
         System.out.println("Enter Establishment Name: ");
-        String estabName = scanner.nextLine();
+        String estabName = scanner.nextLine().trim();
         establishmentName = estabName;
 
         // Get the first line of the establishment address from user input
         System.out.println("Enter First Line Address: ");
-        String firstLineAddress = scanner.nextLine();
+        String firstLineAddress = scanner.nextLine().trim();
         firstLineAdd = firstLineAddress;
 
         // Get the establishment postcode from user input
         System.out.println("Enter Postcode: ");
-        String postcode = scanner.nextLine();
+        String postcode = scanner.nextLine().trim();
         postCode = postcode;
 
         // Get the occupancy of the establishment - this is an int - from user input
@@ -517,6 +478,60 @@ public class IO
 
     }
 
+
+    //***** FILTERS *****//
+
+
+    // Print users who have visited a given establishment
+    private void printUsersByEstablishment()
+    {
+
+        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+        // this tells the scanner object to get its information from the console (System.in)
+
+        //try and catch
+        try
+        {
+            System.out.println("Enter establishment name:");// Print instruction for user
+            String establishment = in.nextLine().trim();// get the next line the user types and store in a variable
+
+            //pass the user entered establishment string and the ioController instance into the controllers filter method
+            //save the returned collection of users in an ArrayList
+            ArrayList<User> users = ioController.filterEventByEstablishment(establishment, ioController);
+
+            // initialise an integer for numbering the list
+            int i = 1;
+
+            //if the ArrayList of users is not empty do this -
+            if(!users.isEmpty())
+            {
+                //loop through the users in the arraylist and do this for each user
+                for (User user : users) {
+
+                    //print out a numbered displayUser() string
+                    System.out.println(i + "." + "\n" + user.displayUser() + "\n");
+
+                    // increment the integer
+                    i++;
+                }
+            }
+
+            // if the ArrayList of users is empty do this -
+            else
+            {
+                //print this message
+                System.out.println("There are no users saved for this establishment.");
+            }
+        }
+
+        // for caught exceptions do this
+        catch (Exception e)
+        {
+            System.out.println("\nInvalid entry, please start again -");
+        }
+
+    }
+
     // Filter Events that a user has been recorded ay by name and email
     private void printEventsByUserAndEmail()
     {
@@ -524,21 +539,18 @@ public class IO
         Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
 
         System.out.println("Enter name:");// Print instruction for user
-        String rawName = in.nextLine();// get the next line the user types and store in a variable
-        String name = rawName.trim(); //trim whitespace from beginning and end of the string
+        String name = in.nextLine().trim();// get the next line the user types and store in a variable
 
         System.out.println("Enter email address:");// Print instruction for user
-        String rawEmail = in.nextLine();// get the next line the user types and store in a variable
-        String email = rawEmail.trim(); //trim whitespace from beginning and end of the string
+        String email = in.nextLine().trim();// get the next line the user types and store in a variable
 
         //Create a new instance of the controller
         Controller controller = new Controller();
 
         // Call method to output the events where name and email match
         controller.filterEventByUserAndEmail(name,email);
-
-
     }
+
 
     // Filter Events that a user has been recorded ay by name and email
     private void printEventsByDate()
@@ -547,20 +559,40 @@ public class IO
         Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
         // this tells the scanner object to get its information from the console (System.in)
 
+        boolean dateValid = false;
+        LocalDate date = null;
 
-        System.out.println("Enter Date in the format yyyy-mm-dd :");// Print instruction for user
-        String rawDate = in.nextLine();// get the next line the user types and store in a variable
-        String date = rawDate.trim(); //trim whitespace from beginning and end of the string
+        //WHILE DATE IS NOT VALID DO THIS
+        while (!dateValid)
+        {
+            //TRY TO SAVE ENTERED DATE AS A LOCALDATE
+            try
+            {
+                System.out.println("Enter date in format yyyy-mm-dd: ");
+                date = LocalDate.parse(in.nextLine().trim());
+            }
+            //CATCH EXCEPTIONS, PRINT MESSAGE AND RESTART LOOP
+            catch (DateTimeParseException e)
+            {
+                System.out.println("\nInvalid date entry, please try again -");
+                continue;
+            }
 
-        LocalDate eventDate = LocalDate.parse(rawDate);
-
+            //IF DATE IS IN FUTURE PRINT MESSAGE AND RESTART LOOP
+            if (date.isAfter(LocalDate.now()))
+            {
+                System.out.println("Date is in the future, please re-enter date");
+                continue;
+            }
+            //IF CODE EXECUTES WITHOUT EXCEPTIONS AND DATE IS NOT IN FUTURE SET TO TRUE TO BREAK OUT OF LOOP
+            dateValid = true;
+        }
 
         //pass the user entered establishment string and the ioController instance into the controllers filter method
         Controller controller = new Controller();
 
         // Call method to filter event by date specified
-        controller.filterEventByDate(eventDate);
-
+        controller.filterEventByDate(date);
 
     }
 
