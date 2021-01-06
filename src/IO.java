@@ -60,8 +60,8 @@ public class IO
         // Creating options for our menu
         System.out.println("\nPlease make a selection");
         System.out.println("1) Show users who have visited an establishment");
-        System.out.println("2) Records by Date");
-        System.out.println("3) Records by Name");
+        System.out.println("2) Show events by specified date");
+        System.out.println("3) Show events by specified name and email address");
         System.out.println("4) Go Back");
 
     }
@@ -203,9 +203,11 @@ public class IO
                 break;
             case 2:
                 // Records by date4
+                printEventsByDate();
                 break;
             case 3:
                 // Records by Name
+                printEventsByUserAndEmail();
                 break;
             case 4:
                 runMenu();
@@ -512,6 +514,53 @@ public class IO
 
         // Message to the user to tell them that a new event has been added
         System.out.println("New establishment, " + establishmentName + ", has been added");
+
+    }
+
+    // Filter Events that a user has been recorded ay by name and email
+    private void printEventsByUserAndEmail()
+    {
+
+        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+
+        System.out.println("Enter name:");// Print instruction for user
+        String rawName = in.nextLine();// get the next line the user types and store in a variable
+        String name = rawName.trim(); //trim whitespace from beginning and end of the string
+
+        System.out.println("Enter email address:");// Print instruction for user
+        String rawEmail = in.nextLine();// get the next line the user types and store in a variable
+        String email = rawEmail.trim(); //trim whitespace from beginning and end of the string
+
+        //Create a new instance of the controller
+        Controller controller = new Controller();
+
+        // Call method to output the events where name and email match
+        controller.filterEventByUserAndEmail(name,email);
+
+
+    }
+
+    // Filter Events that a user has been recorded ay by name and email
+    private void printEventsByDate()
+    {
+
+        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+        // this tells the scanner object to get its information from the console (System.in)
+
+
+        System.out.println("Enter Date in the format yyyy-mm-dd :");// Print instruction for user
+        String rawDate = in.nextLine();// get the next line the user types and store in a variable
+        String date = rawDate.trim(); //trim whitespace from beginning and end of the string
+
+        LocalDate eventDate = LocalDate.parse(rawDate);
+
+
+        //pass the user entered establishment string and the ioController instance into the controllers filter method
+        Controller controller = new Controller();
+
+        // Call method to filter event by date specified
+        controller.filterEventByDate(eventDate);
+
 
     }
 
