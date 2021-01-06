@@ -255,6 +255,119 @@ public final class Controller
         return users;
     }
 
+    protected void filterEventByUserAndEmail(String name, String emailAdd)
+    {
+
+        // Read the csv file
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        try {
+            // Read through the csv file until the end
+            for (String line : csvText) {
+                // the last line of the CSV file may be null, so check first!
+                if (line != null) {
+                    // The column split is either a comma or a new line
+                    String[] values = line.split("[,/n]");
+
+                    // In order of the Columns in CSV File
+                    String eventID = values[0];
+                    String username = values[1];
+                    LocalDate dob = LocalDate.parse(values[2]);
+                    String email = values[3];
+                    String contactNumber = values[4];
+                    Integer age = Integer.parseInt(values[5]);
+                    LocalDate eventDate = LocalDate.parse(values[6]);
+                    String eventTime = values[7];
+                    Integer partySize = Integer.parseInt(values[8]);
+                    String establishmentName = values[9];
+                    String firstLineAddress = values[10];
+                    String postcode = values[11];
+                    Integer maxOccupancy = Integer.parseInt(values[12]);
+
+                    // Parse the string event time as  local time
+                    LocalTime localEventTime = LocalTime.parse(eventTime);
+
+                    // If name and email address equals that in the scanner in the IO class then output the record
+                    if (username.equals(name) && email.equals(emailAdd)) {
+                        System.out.println("Event - " + values[1] + ", " + values[6]  + ", " + values[7]  + ", " + values[9]  + ", " + values[8]);
+                    }
+
+                    // Add variables to user constructor
+                    User newUser = new User(username, dob, email, contactNumber);
+
+                    // Add variables to establishment constructor
+                    Establishment newEstablishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
+
+                    // Add variables to event constructor
+                    Event newEvent = new Event(newUser, eventDate, localEventTime, partySize, newEstablishment);
+                }
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error");
+        }
+
+    }
+
+    protected void filterEventByDate(LocalDate date)
+    {
+
+        // Read the csv file
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        try {
+            // Read through the csv file until the end
+            for (String line : csvText) {
+                // the last line of the CSV file may be null, so check first!
+                if (line != null) {
+                    // The column split is either a comma or a new line
+                    String[] values = line.split("[,/n]");
+
+                    // In order of the Columns in CSV File
+                    String eventID = values[0];
+                    String username = values[1];
+                    LocalDate dob = LocalDate.parse(values[2]);
+                    String email = values[3];
+                    String contactNumber = values[4];
+                    Integer age = Integer.parseInt(values[5]);
+                    LocalDate eventDate = LocalDate.parse(values[6]);
+                    String eventTime = values[7];
+                    Integer partySize = Integer.parseInt(values[8]);
+                    String establishmentName = values[9];
+                    String firstLineAddress = values[10];
+                    String postcode = values[11];
+                    Integer maxOccupancy = Integer.parseInt(values[12]);
+
+                    // Parse the string event time as  local time
+                    LocalTime localEventTime = LocalTime.parse(eventTime);
+
+                    // If Event Date equals that in the scanner in the IO class then output the record
+                    if (eventDate.equals(date)) {
+                        System.out.println("Event - " + values[1] + ", " + values[6]  + ", " + values[7]  + ", " + values[9]  + ", " + values[8]);
+                    }
+
+                    // Add variables to user constructor
+                    User newUser = new User(username, dob, email, contactNumber);
+
+                    // Add variables to establishment constructor
+                    Establishment newEstablishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
+
+                    // Add variables to event constructor
+                    Event newEvent = new Event(newUser, eventDate, localEventTime, partySize, newEstablishment);
+                }
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error");
+        }
+
+    }
+
+
 }
 
 
