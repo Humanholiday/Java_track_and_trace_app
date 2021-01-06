@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 // NEW MAIN CLASS CREATED IN ORDER TO RUN TESTS
 
@@ -12,23 +14,82 @@ public class Main {
             IO menu = new IO();
             menu.runMenu();
 
+            IO debugIO  = new IO();
+            debug(debugIO);
+
     }
 
 
     // DEBUG METHOD FOR APPLICATION
 
-    public static void debug()
+    public static void debug(IO io)
     {
 
-//        //CREATE A USER OBJECT - JH
-//
-//        User Jack = new User
-//                (
-//                        "Jack Healy",
-//                        LocalDate.of(1985, 6, 8) ,
-//                        "jackhealy85@gmail.com",
-//                        "07515708720"
-//                );
+//        //Hard code 7 user objects
+        User[] users = new User[7];
+        users[0] = new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[1] = new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[2]= new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[3] = new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[4]= new User
+                ("Jack Healy", LocalDate.of(1985, 4, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[5] = new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+        users[6] = new User
+                ("Jack Healy", LocalDate.of(1985, 6, 8) ,
+                        "jackhealy85@gmail.com", "07515708720");
+
+        // hard code 7 establishments
+        Establishment[] establishments = new Establishment[7];
+        establishments[0] = new Establishment("Some Coffee House", "1 King Street",
+                                                  "FA1 3KE,", 5);
+        establishments[1] = new Establishment("Some Restaurant Place", "1 Queen Street",
+                                                "FA2 3KE", 5);
+        establishments[2]= new Establishment("Some Book Place", "1 Regal Street",
+                                                "FA4 3KE", 20);
+        establishments[3] = new Establishment("Some Book Place", "1 Regal Street",
+                                                "FA4 3KE", 20);
+        establishments[4] = new Establishment("Some Book Place", "1 Regal Street",
+                                                "FA4 3KE", 20);
+        establishments[5] = new Establishment("Some Book Place", "1 Regal Street",
+                                                "FA4 3KE", 20);
+        establishments[6]= new Establishment("Some Book Place", "1 Regal Street",
+                                                "FA4 3KE", 20);
+
+
+        //hard code 7 events
+        Event[] events = new Event[7];
+        events[0] = new Event
+                (users[0], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[0]);
+        events[1] = new Event
+                (users[1], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[1]);
+        events[2]= new Event
+                (users[2], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[2]);
+        events[3] = new Event
+                (users[3], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[3]);
+        events[4] = new Event
+                (users[4], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[4]);
+        events[5] = new Event
+                (users[5], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[5]);
+        events[6] = new Event
+                (users[6], LocalDate.of(2020, 12, 10),
+                        LocalTime.of(12, 30), 400, establishments[6]);
 //
 //        //CREATE AN ESTABLISHMENT OBJECT - JH
 //
@@ -39,17 +100,8 @@ public class Main {
 //                        "NE1 7RT",
 //                        2633
 //                );
-//
-//        //CREATE AN EVENT OBJECT - JH
-//
-//        Event TheBigOne = new Event
-//                (
-//                        Jack,
-//                        LocalDate.of(2020, 12, 10),
-//                        LocalTime.of(12, 30),
-//                        400,
-//                        TwoEgg
-//                );
+////
+
 
 
         // TEST TO ADD ESTABLISHMENT
@@ -65,12 +117,6 @@ public class Main {
 
 
 
-//        // sample of Establishments to save in out CSV File
-//        Establishment[] Establishments = new Establishment[][3];
-//        Establishment[0] = new Establishment("Some Coffee House", "1 King Street", "FA1 3KE,", 5);
-//        Establishment[1] = new Establishment("Some Restaurant Place", "1 Queen Street", "FA2 3KE", 5);
-//        Establishment[2] = new Establishment("Some Book Place", "1 Regal Street", "FA4 3KE", 20);
-//        Establishment estab = new Establishment("Harry Potters House", new String[]{"1 Privet Drive","NE1 4YU"},2); System.out.println(estab.getEstablishmentDetails());
 
 //        Establishment FiveSausage = new Establishment      // NEED TO INVESTIGATE HOW TO ADD STRING[] AS CONSTRUCTOR
 //                (
