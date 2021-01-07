@@ -27,7 +27,7 @@ public class Main {
 
         System.out.println("\n\nRunning debug method - ");
 
-       //****** HARD CODE 7 USERS *****//
+        //****** HARD CODE 7 USERS *****//
 
         //CREATE ARRAY OF OBJECTS
         User[] users = new User[7];
@@ -36,7 +36,7 @@ public class Main {
 
         /* USER 1 */
 
-        //WRAP IN TRY CATCH
+//WRAP IN TRY CATCH
         try
         {
             //UPDATE ID STRING FOR CURRENT OBJECT
@@ -50,7 +50,7 @@ public class Main {
             System.out.println("\n" + user + " " + users[0].getName() + " created");
         }
         catch (Exception e)
-            //IF EXCEPTIONS PRINT OUT DETAILS INCLUDING CURRENT OBJECT ID
+        //IF EXCEPTIONS PRINT OUT DETAILS INCLUDING CURRENT OBJECT ID
         { System.out.println(user + " " + e.getMessage()); }
 
         /* USER 2 */
@@ -59,8 +59,8 @@ public class Main {
         {
             user = "user2";
             users[1] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 8),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jennifer Paraphernalia", LocalDate.of(1991, 2, 5),
+                            "jp!gmail.com", "07465729206");
 
             System.out.println(user + " " + users[1].getName() + " created");
         }
@@ -73,8 +73,8 @@ public class Main {
         {
             user = "user3";
             users[2] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 56565),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jacob Gandhi", LocalDate.of(1969, 4, 56565),
+                            "gandhi@hotmail.com", "07846289444");
 
             System.out.println(user + " " + users[2].getName() + " created");
         }
@@ -87,8 +87,8 @@ public class Main {
         {
             user = "user4";
             users[3] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 3),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jemma Stopthat", LocalDate.of(1979, 2, 1),
+                            "stopthat@talktalk.net", "07629572058");
 
             System.out.println(user + " " + users[3].getName() + " created");
         }
@@ -101,8 +101,8 @@ public class Main {
         {
             user = "user5";
             users[4] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 3),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jonty Stanislawski", LocalDate.of(1901, 1, 35),
+                            "jontybadboy@durham.gov.uk", "01912783894");
 
             System.out.println(user + " " + users[4].getName() + " created");
         }
@@ -115,8 +115,8 @@ public class Main {
         {
             user = "user6";
             users[5] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 5),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jentina Jokes", LocalDate.of(1945, 2, 3),
+                            "jj92787@sky.net", "07517398720");
 
             System.out.println(user + " " + users[5].getName() + " created");
         }
@@ -129,8 +129,8 @@ public class Main {
         {
             user = "user7";
             users[6] = new User
-                    ("Jack Healy", LocalDate.of(1985, 6, 5),
-                            "jackhealy85@gmail.com", "07515708720");
+                    ("Jerry Jason", LocalDate.of(1985, 6, 5),
+                            "jjson£gmail.com", "070372759564");
 
             System.out.println(user + " " + users[6].getName() + " created");
         }
@@ -167,66 +167,66 @@ public class Main {
         try {
             establishment = "establishment2";
             establishments[1] = new Establishment("Some Restaurant Place", "1 Queen Street",
-                                                "FA2 3KE", 5);
+                    "FA2 3KE", 5);
             System.out.println(establishment + " " + establishments[1].getName() + " created");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage()); }
+        { System.out.println(establishment + " " + e.getMessage()); }
 
         /* ESTABLISHMENT 3 */
 
         try {
             establishment = "establishment3";
             establishments[2] = new Establishment("Some Book Place", "1 Regal Street",
-                                                "FA4 3KE", 20);
+                    "FA4 3KE", 20);
             System.out.println(establishment + " " + establishments[2].getName() + " created");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage()); }
+        { System.out.println(establishment + " " + e.getMessage()); }
 
         /* ESTABLISHMENT 4 */
 
         try {
             establishment = "establishment4";
-            establishments[3] = new Establishment("Some Restaurant Place", "1 Queen Street",
-                                                "FA2 3KE", 5);
+            establishments[3] = new Establishment("Some Gourmet Place", "1 Viceroy Street",
+                    "FA5 3KE", 5);
             System.out.println(establishment + " " + establishments[3].getName() + " created");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage()); }
+        { System.out.println(establishment + " " + e.getMessage()); }
 
         /* ESTABLISHMENT 5 */
 
         try {
             establishment = "establishment5";
-            establishments[4] = new Establishment("Some Restaurant Place", "1 Queen Street",
-                                                "FA2 3KE", 5);
+            establishments[4] = new Establishment("Some Cuisine Place", "1 Empress Street",
+                    "FA6 3KE", 5);
             System.out.println(establishment + " " + establishments[4].getName() + " created");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage()); }
+        { System.out.println(establishment + " " + e.getMessage()); }
 
         /* ESTABLISHMENT 6 */
 
         try {
             establishment = "establishment6";
-            establishments[5] = new Establishment("Some Restaurant Place", "1 Queen Street",
-                                                "FA2 3KE", 5);
+            establishments[5] = new Establishment("Some Aperitif Place", "1 Court Jester Street",
+                    "FA7 3KE", 5);
             System.out.println(establishment + " " + establishments[5].getName() + " created");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage()); }
+        { System.out.println(establishment + " " + e.getMessage()); }
 
         /* ESTABLISHMENT 7 */
 
         try {
             establishment = "establishment7";
-            establishments[6] = new Establishment("Some Restaurant Place", "1 Queen Street",
-                                                "FA2 3KE", 5);
+            establishments[6] = new Establishment("Some Down-in-one Place", "1 Archbishop Street",
+                    "FA8 3KE", 5);
             System.out.println(establishment + " " + establishments[6].getName() + " created" + "\n");
         }
         catch (Exception e)
-         { System.out.println(establishment + " " + e.getMessage() + "\n"); }
+        { System.out.println(establishment + " " + e.getMessage() + "\n"); }
 
 
 
@@ -244,9 +244,9 @@ public class Main {
             //UPDATE ID STRING FOR CURRENT OBJECT
             event = "event1";
             //ADD OBJECT TO ARRAY
-        events[0] = new Event
-                (users[0], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[0]);
+            events[0] = new Event
+                    (users[0], LocalDate.of(2020, 12, 10),
+                            LocalTime.of(12, 30), 400, establishments[0]);
             //IF NO EXCEPTIONS, PRINT OUT SUCCESS MESSAGE
             System.out.println(event + " " + events[0].getEventID() + " created");
         }
@@ -258,9 +258,9 @@ public class Main {
 
         try {
             event = "event2";
-        events[1] = new Event
-                (users[1], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[1]);
+            events[1] = new Event
+                    (users[1], LocalDate.of(2020, 11, 9),
+                            LocalTime.of(25, 30), 400, establishments[1]);
             System.out.println(event + " " + events[1].getEventID() + " created");
         }
         catch (Exception e)
@@ -270,9 +270,9 @@ public class Main {
 
         try {
             event = "event3";
-        events[2] = new Event
-                (users[2], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[2]);
+            events[2] = new Event
+                    (users[2], LocalDate.of(2021, 13, 6),
+                            LocalTime.of(12, 61), 400, establishments[2]);
             System.out.println(event + " " + events[2].getEventID() + " created");
         }
         catch (Exception e)
@@ -282,9 +282,9 @@ public class Main {
 
         try {
             event = "event4";
-        events[3] = new Event
-                (users[3], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[3]);
+            events[3] = new Event
+                    (users[3], LocalDate.of(2020, 9, 7),
+                            LocalTime.of(12, 45), 400, establishments[3]);
             System.out.println(event + " " + events[3].getEventID() + " created");
         }
         catch (Exception e)
@@ -294,9 +294,9 @@ public class Main {
 
         try {
             event = "event5";
-        events[4] = new Event
-                (users[4], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[4]);
+            events[4] = new Event
+                    (users[4], LocalDate.of(2020, 6, 7),
+                            LocalTime.of(13, 2), 400, establishments[4]);
             System.out.println(event + " " + events[4].getEventID() + " created");
         }
         catch (Exception e)
@@ -306,9 +306,9 @@ public class Main {
 
         try {
             event = "event6";
-        events[5] = new Event
-                (users[5], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[5]);
+            events[5] = new Event
+                    (users[5], LocalDate.of(2022, 1, 3),
+                            LocalTime.of(19, 35), 400, establishments[5]);
             System.out.println(event + " " + events[5].getEventID() + " created");
         }
         catch (Exception e)
@@ -318,15 +318,13 @@ public class Main {
 
         try {
             event = "event7";
-        events[6] = new Event
-                (users[6], LocalDate.of(2020, 12, 10),
-                        LocalTime.of(12, 30), 400, establishments[6]);
+            events[6] = new Event
+                    (users[6], LocalDate.of(2021, 1, 4),
+                            LocalTime.of(18, 15), 400, establishments[6]);
             System.out.println(event + " " + events[6].getEventID() + " created" + "\n");
         }
         catch (Exception e)
         { System.out.println(event + " " + e.getMessage() + "\n"); }
-
-
 
         //LOOP THROUGH USERS ARRAY AND PRINT DISPLAY EACH USER
         for(int i = 0; i < users.length; i++)
