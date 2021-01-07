@@ -275,7 +275,8 @@ public class IO
         String email = "";
         String contactNumber = "";
         //Integer age = -1;         //Don't need to enter this as it is calculated?
-        String eventDate = "";
+        //String eventDate = "";
+        LocalDate eventDate = LocalDate.parse("1900-01-01");
         String eventTime = "";
         Integer partySize = -1;
         String establishmentName = "";
@@ -370,9 +371,11 @@ public class IO
 
         // Get the event date from user input
         System.out.println("Enter event date in format yyyy-mm-dd: ");
-        String dateOfEvent = scanner.nextLine().trim();
-        eventDate = dateOfEvent;
-        LocalDate localDateEventDate = LocalDate.parse(eventDate);   // Convert the string dob to a local date
+        LocalDate dateOfEvent = LocalDate.parse("1900-01-01");
+        //String dateOfEvent = scanner.nextLine().trim();
+        //eventDate = dateOfEvent;
+        //LocalDate localDateEventDate = LocalDate.parse(eventDate);   // Convert the string dob to a local date
+        dateOfEvent = LocalDate.parse(scanner.nextLine());
 
         // Get the event time from user input
         System.out.println("Enter event time in format 00:00: ");
@@ -412,7 +415,7 @@ public class IO
         Establishment newEstablishment = new Establishment(establishmentName, firstLineAdd, postCode, occ);
 
         // Add variables to event constructor
-        Event newEvent = new Event (newUser, localDateEventDate, localTimeOfEvent, partySize, newEstablishment);
+        Event newEvent = new Event (newUser, dateOfEvent, localTimeOfEvent, partySize, newEstablishment);
 
         // Create a new controller object and try to add the new establishment to the establishments.csv
         Controller controller = new Controller();

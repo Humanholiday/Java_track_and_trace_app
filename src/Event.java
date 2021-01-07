@@ -64,10 +64,11 @@ public class Event
     {
         return this.eventID;
     }
-    public String getEventDate()
-    {
-        return this.eventDate.format(formatter);   //******** NEW - FORMAT DATE
-    }
+    //public String getEventDate()
+    //{
+    //    return this.eventDate.format(formatter);   //******** NEW - FORMAT DATE
+    //}
+    public LocalDate getEventDate() { return this.eventDate; }
     public LocalTime getEventTime()
     {
         return this.eventTime;

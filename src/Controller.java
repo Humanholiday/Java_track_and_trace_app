@@ -89,9 +89,11 @@ public final class Controller
             csvWriter.append(",");
             csvWriter.append(event.getUser().getAge().toString());
             csvWriter.append(",");
-            csvWriter.append(event.getEventDate());
+            csvWriter.append(event.getEventDate().toString());
             csvWriter.append(",");
             csvWriter.append(event.getEventTime().toString());
+            csvWriter.append(",");
+            csvWriter.append(event.getPartyNumber().toString());
             csvWriter.append(",");
             csvWriter.append(event.getEstablishment().getName());
             csvWriter.append(",");
@@ -266,7 +268,7 @@ public final class Controller
                 // the last line of the CSV file may be null, so check first!
                 if (line != null) {
                     // The column split is either a comma or a new line
-                    String[] values = line.split("[,/n]");
+                    String[] values = line.split("[,]");
 
                     // In order of the Columns in CSV File
                     String eventID = values[0];
@@ -322,7 +324,7 @@ public final class Controller
                 // the last line of the CSV file may be null, so check first!
                 if (line != null) {
                     // The column split is either a comma or a new line
-                    String[] values = line.split("[,/n]");
+                    String[] values = line.split("[,]");
 
                     // In order of the Columns in CSV File
                     String eventID = values[0];
