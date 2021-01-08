@@ -176,11 +176,11 @@ public final class Controller
                     //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
                     String eventID = strings[0];
                     String username = strings[1];
-                    LocalDate dob = LocalDate.parse(strings[2], User.formatter); //
+                    LocalDate dob = LocalDate.parse(strings[2]); //
                     String email = strings[3];
                     String contactNumber = strings[4];
                     Integer age = Integer.parseInt(strings[5]);
-                    LocalDate eventDate = LocalDate.parse(strings[6], User.formatter);
+                    LocalDate eventDate = LocalDate.parse(strings[6]);
                     LocalTime eventTime = LocalTime.parse(strings[7]);
                     Integer partySize = Integer.parseInt(strings[8]);
                     String establishmentName = strings[9];

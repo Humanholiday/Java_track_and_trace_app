@@ -421,7 +421,9 @@ public class IO
         Controller controller = new Controller();
         try
         {
-            controller.addEvent(newEvent);
+            ioController.addEvent(newEvent);
+            //ALSO ADD ESTABLISHMENT TO ESTABLISHMENTS.CSV AS NEW ENTRY
+            ioController.addEstablishment(newEstablishment);
         } catch (IOException e)
         {
             e.printStackTrace();
