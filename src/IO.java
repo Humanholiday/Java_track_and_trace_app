@@ -119,7 +119,7 @@ public class IO
                 System.out.print("\nPlease enter your choice:");
 
                 // Int isn't a string so have to wrap it in a parse
-                choice = Integer.parseInt(scan.nextLine());
+                choice = Integer.parseInt(scan.nextLine().trim());
             }
             catch(NumberFormatException e)
             {
@@ -148,7 +148,7 @@ public class IO
                 System.out.print("\nPlease enter your choice:");
 
                 // Int isn't a string so have to wrap it in a parse
-                subChoice = Integer.parseInt(scanSub.nextLine());
+                subChoice = Integer.parseInt(scanSub.nextLine().trim());
             }
             catch(NumberFormatException e)
             {
@@ -417,8 +417,7 @@ public class IO
         // Add variables to event constructor
         Event newEvent = new Event (newUser, dateOfEvent, localTimeOfEvent, partySize, newEstablishment);
 
-        // Create a new controller object and try to add the new establishment to the establishments.csv
-        Controller controller = new Controller();
+        // try to add the new establishment to the establishments.csv
         try
         {
             ioController.addEvent(newEvent);
@@ -468,11 +467,11 @@ public class IO
         // Add variables to establishment constructor
         Establishment newEstablishment = new Establishment(establishmentName, firstLineAdd, postCode, occ);
 
-        // Create a new controller object and try to add the new establishment to the establishments.csv
+        // try to add the new establishment to the establishments.csv
         Controller controller = new Controller();
         try
         {
-            controller.addEstablishment(newEstablishment);
+            ioController.addEstablishment(newEstablishment);
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -549,11 +548,8 @@ public class IO
         System.out.println("Enter email address:");// Print instruction for user
         String email = in.nextLine().trim();// get the next line the user types and store in a variable
 
-        //Create a new instance of the controller
-        Controller controller = new Controller();
-
         // Call method to output the events where name and email match
-        controller.filterEventByUserAndEmail(name,email);
+        ioController.filterEventByUserAndEmail(name,email);
     }
 
 
@@ -594,63 +590,63 @@ public class IO
         }
 
         //pass the user entered establishment string and the ioController instance into the controllers filter method
-        Controller controller = new Controller();
-
         // Call method to filter event by date specified
-        controller.filterEventByDate(date);
+        ioController.filterEventByDate(date);
 
     }
 
-    private void printEventbyDate()
-    {
+    // **** JH 11/01/2021 - I THINK THE BELOW HAS BEEN ADDED IN ERROR BUT LEAVING HERE UNTIL CONFIRMED ****
 
-        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
-        // this tells the scanner object to get its information from the console (System.in)
-
-        //try and catch
-        try
-        {
-            System.out.println("Enter the date of the event:");// Print instruction for user
-            String rawDate = in.nextLine();// get the next line the user types and store in a variable
-            String date = rawDate.trim(); //trim whitespace from beginning and end of the string
-            LocalDate eventDate = LocalDate.parse(rawDate);
-
-            //pass the user entered establishment string and the ioController instance into the controllers filter method
-            //save the returned collection of users in an ArrayList
-            ArrayList<Event> events = ioController.filterEventByDate(eventDate, ioController);
-
-            // initialise an integer for numbering the list
-            int i = 1;
-
-            //if the ArrayList of users is not empty do this -
-            if(!events.isEmpty())
-            {
-                //loop through the users in the arraylist and do this for each user
-                for (Event event : events) {
-
-                    //print out a numbered displayEvent() string
-                    System.out.println(i + "." + "\n" + event.getEventDate(eventDate) + "\n");
-
-                    // increment the integer
-                    i++;
-                }
-            }
-
-            // if the ArrayList of users is empty do this -
-            else
-            {
-                //print this message
-                System.out.println("No events occurred on this date.");
-            }
-        }
-
-        // for caught exceptions do this
-        catch (Exception e)
-        {
-            System.out.println("\nInvalid entry, please start again -");
-        }
-
-    }
+//    private void printEventbyDate()
+//    {
+//
+//        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+//        // this tells the scanner object to get its information from the console (System.in)
+//
+//        //try and catch
+//        try
+//        {
+//            System.out.println("Enter the date of the event:");// Print instruction for user
+//            String rawDate = in.nextLine();// get the next line the user types and store in a variable
+//            String date = rawDate.trim(); //trim whitespace from beginning and end of the string
+//            LocalDate eventDate = LocalDate.parse(rawDate);
+//
+//            //pass the user entered establishment string and the ioController instance into the controllers filter method
+//            //save the returned collection of users in an ArrayList
+//            ArrayList<Event> events = ioController.filterEventByDate(eventDate, ioController);
+//
+//            // initialise an integer for numbering the list
+//            int i = 1;
+//
+//            //if the ArrayList of users is not empty do this -
+//            if(!events.isEmpty())
+//            {
+//                //loop through the users in the arraylist and do this for each user
+//                for (Event event : events) {
+//
+//                    //print out a numbered displayEvent() string
+//                    System.out.println(i + "." + "\n" + event.getEventDate(eventDate) + "\n");
+//
+//                    // increment the integer
+//                    i++;
+//                }
+//            }
+//
+//            // if the ArrayList of users is empty do this -
+//            else
+//            {
+//                //print this message
+//                System.out.println("No events occurred on this date.");
+//            }
+//        }
+//
+//        // for caught exceptions do this
+//        catch (Exception e)
+//        {
+//            System.out.println("\nInvalid entry, please start again -");
+//        }
+//
+//    }
 
 
 }
