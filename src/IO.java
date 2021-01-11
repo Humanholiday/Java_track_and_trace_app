@@ -52,7 +52,7 @@ public class IO
         System.out.println("3) Filters");
         System.out.println("4) Print Events");
         System.out.println("5) Print Establishments");
-        System.out.println("6) Exit the program");
+        System.out.println("6) Exit the program and run debug method");
     }
 
     // Sub menu options
@@ -185,7 +185,7 @@ public class IO
                 break;
             case 6:
                 exit = true;
-                System.out.print("Goodbye");
+                System.out.print("Goodbye \n");
                 break;
             default:
                 System.out.print("Error has occured");
@@ -421,7 +421,9 @@ public class IO
         Controller controller = new Controller();
         try
         {
-            controller.addEvent(newEvent);
+            ioController.addEvent(newEvent);
+            //ALSO ADD ESTABLISHMENT TO ESTABLISHMENTS.CSV AS NEW ENTRY
+            ioController.addEstablishment(newEstablishment);
         } catch (IOException e)
         {
             e.printStackTrace();
