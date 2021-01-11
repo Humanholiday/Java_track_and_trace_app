@@ -599,5 +599,56 @@ public class IO
 
     }
 
+    private void printEventbyDate()
+    {
+
+        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
+        // this tells the scanner object to get its information from the console (System.in)
+
+        //try and catch
+        try
+        {
+            System.out.println("Enter the date of the event:");// Print instruction for user
+            String rawDate = in.nextLine();// get the next line the user types and store in a variable
+            String date = rawDate.trim(); //trim whitespace from beginning and end of the string
+            LocalDate eventDate = LocalDate.parse(rawDate);
+
+            //pass the user entered establishment string and the ioController instance into the controllers filter method
+            //save the returned collection of users in an ArrayList
+            ArrayList<Event> events = ioController.filterEventByDate(eventDate, ioController);
+
+            // initialise an integer for numbering the list
+            int i = 1;
+
+            //if the ArrayList of users is not empty do this -
+            if(!events.isEmpty())
+            {
+                //loop through the users in the arraylist and do this for each user
+                for (Event event : events) {
+
+                    //print out a numbered displayEvent() string
+                    System.out.println(i + "." + "\n" + event.getEventDate(eventDate) + "\n");
+
+                    // increment the integer
+                    i++;
+                }
+            }
+
+            // if the ArrayList of users is empty do this -
+            else
+            {
+                //print this message
+                System.out.println("No events occurred on this date.");
+            }
+        }
+
+        // for caught exceptions do this
+        catch (Exception e)
+        {
+            System.out.println("\nInvalid entry, please start again -");
+        }
+
+    }
+
 
 }

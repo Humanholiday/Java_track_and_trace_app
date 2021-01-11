@@ -288,8 +288,8 @@ public final class Controller
                     // Parse the string event time as  local time
                     LocalTime localEventTime = LocalTime.parse(eventTime);
 
-                    // If name and email address equals that in the scanner in the IO class then output the record
-                    if (username.equals(name) && email.equals(emailAdd)) {
+                    // If name and email address equals that in the scanner in the IO class then output the record. Added ignore case here to allow for typing errors.
+                    if (username.equalsIgnoreCase(name) && email.equalsIgnoreCase(emailAdd)) {
                         System.out.println("Event - " + values[1] + ", " + values[6]  + ", " + values[7]  + ", " + values[9]  + ", " + values[8]);
                     }
 
