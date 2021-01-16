@@ -1,6 +1,6 @@
-# Title
+# Group 2
 
-## By 
+## By Jack Healy, Vicky Williams, Richard Glover, Josh Moore
 
 **Built with**
 
@@ -8,22 +8,23 @@
 
 
 **Objective**
+
 To create a Login screen with a clean, attractive, responsive and interactive UI.
 
 To add interactivity where possible, with cursor highlighting, form validation and an animated Sign In button.
 
 Use a sympathetic colour palette.
 
-Packages -
-Outside of the standard dependencies created by create-react-app and installing Sass I used -
-[react-progress-button](https://github.com/mathieudutour/react-progress-button)
 
 **Steps**
 
 ```
-1. Git clone repo.
-2. Run npm install.
-3. Run npm start.
+1. Git clone repo
+2. Open terminal
+3. Check java is installed -  run java -version and javac -version
+4. Navigate to csc8427-track-and-trace/src
+5. Run compile - javac Main.java
+6. Run program - java Main
 ```
 
 **Overview**

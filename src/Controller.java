@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public final class Controller
 {
 
-//     DO WE NEED TO MAKE THIS CLASS, ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE (FINAL)? - JH
+//   ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE
 
         // Attributes
  private String csv;
@@ -32,7 +32,7 @@ public final class Controller
     protected boolean addEstablishment(Establishment establishment) throws IOException {
 
         //ASSIGN FILENAME VARIABLE
-        String fileName = "data/establishments.csv";
+        String fileName = "src/data/establishments.csv";
 
         //IF THE notDuplicate METHOD RETURNS TRUE DO THIS
             if (notDuplicate(establishment.getName(), fileName)) {
@@ -43,9 +43,9 @@ public final class Controller
                 //ADD THE DETAILS OF THE ESTABLISHMENT TO THE CSV, FLUSH AND CLOSE THEN RETURN TRUE
                 csvWriter.append(establishment.getName());
                 csvWriter.append(",");
-                csvWriter.append(establishment.getFirstLineAddress()); // UNSURE HOW TO PULL FIRST LINE
+                csvWriter.append(establishment.getFirstLineAddress());
                 csvWriter.append(",");
-                csvWriter.append(establishment.getPostcode()); // UNSURE HOW TO PULL POSTCODE
+                csvWriter.append(establishment.getPostcode());
                 csvWriter.append(",");
                 csvWriter.append(establishment.getMaxOccupancy().toString());
                 csvWriter.append("\n");
@@ -68,7 +68,7 @@ public final class Controller
     protected boolean addEvent(Event event) throws IOException
     {
         //ASSIGN FILENAME VARIABLE
-        String fileName = "data/events.csv";
+        String fileName = "src/data/events.csv";
 
         //IF THE notDuplicate() METHOD RETURNS TRUE DO THIS
         if (notDuplicate(event.getEventID().toString(), fileName)) {
@@ -120,7 +120,7 @@ public final class Controller
     protected ArrayList<Establishment> getEstablishments() {
 
         // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/establishments.csv");
 
         //CHECK IF THE ARRAYLIST IS EMPTY
         assert csvText != null;
@@ -157,7 +157,7 @@ public final class Controller
         protected ArrayList<Event> getEvents() {
 
             // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
-            ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+            ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
 
             //CHECK IF THE ARRAYLIST IS EMPTY
             assert csvText != null;
@@ -176,7 +176,7 @@ public final class Controller
                     //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
                     String eventID = strings[0];
                     String username = strings[1];
-                    LocalDate dob = LocalDate.parse(strings[2]); //
+                    LocalDate dob = LocalDate.parse(strings[2]);
                     String email = strings[3];
                     String contactNumber = strings[4];
                     Integer age = Integer.parseInt(strings[5]);
@@ -261,7 +261,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
         try {
             // Read through the csv file until the end
             for (String line : csvText) {
@@ -317,7 +317,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
         try {
             // Read through the csv file until the end
             for (String line : csvText) {

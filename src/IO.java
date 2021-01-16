@@ -10,7 +10,7 @@ public class IO
     // Attributes
     boolean exit = false;
     //CONTROLLER OBJECT IS ATTRIBUTE OF IO CLASS
-    private Controller ioController;
+    private final Controller ioController;
 
 
     // Constructor
@@ -188,7 +188,7 @@ public class IO
                 System.out.print("Goodbye \n");
                 break;
             default:
-                System.out.print("Error has occured");
+                System.out.print("Error has occurred");
 
         }
     }
@@ -200,21 +200,21 @@ public class IO
         {
             case 1:
                 //Present a list of users who have visited a given establishment
-                printUsersByEstablishment();
+                printUsersByEstablishment(ioController);
                 break;
             case 2:
                 // Records by date4
-                printEventsByDate();
+                printEventsByDate(ioController);
                 break;
             case 3:
                 // Records by Name
-                printEventsByUserAndEmail();
+                printEventsByUserAndEmail(ioController);
                 break;
             case 4:
                 runMenu();
                 break;
             default:
-                System.out.print("Error has occured");
+                System.out.print("Error has occurred");
 
         }
     }
@@ -487,7 +487,7 @@ public class IO
 
 
     // Print users who have visited a given establishment
-    private void printUsersByEstablishment()
+    private void printUsersByEstablishment(Controller ioController)
     {
 
         Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
@@ -537,7 +537,7 @@ public class IO
     }
 
     // Filter Events that a user has been recorded ay by name and email
-    private void printEventsByUserAndEmail()
+    private void printEventsByUserAndEmail(Controller ioController)
     {
 
         Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
@@ -554,7 +554,7 @@ public class IO
 
 
     // Filter Events that a user has been recorded ay by name and email
-    private void printEventsByDate()
+    private void printEventsByDate(Controller ioController)
     {
 
         Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
@@ -594,59 +594,5 @@ public class IO
         ioController.filterEventByDate(date);
 
     }
-
-    // **** JH 11/01/2021 - I THINK THE BELOW HAS BEEN ADDED IN ERROR BUT LEAVING HERE UNTIL CONFIRMED ****
-
-//    private void printEventbyDate()
-//    {
-//
-//        Scanner in  = new Scanner(System.in);//Create a scanner object and pass System.in into the constructor.
-//        // this tells the scanner object to get its information from the console (System.in)
-//
-//        //try and catch
-//        try
-//        {
-//            System.out.println("Enter the date of the event:");// Print instruction for user
-//            String rawDate = in.nextLine();// get the next line the user types and store in a variable
-//            String date = rawDate.trim(); //trim whitespace from beginning and end of the string
-//            LocalDate eventDate = LocalDate.parse(rawDate);
-//
-//            //pass the user entered establishment string and the ioController instance into the controllers filter method
-//            //save the returned collection of users in an ArrayList
-//            ArrayList<Event> events = ioController.filterEventByDate(eventDate, ioController);
-//
-//            // initialise an integer for numbering the list
-//            int i = 1;
-//
-//            //if the ArrayList of users is not empty do this -
-//            if(!events.isEmpty())
-//            {
-//                //loop through the users in the arraylist and do this for each user
-//                for (Event event : events) {
-//
-//                    //print out a numbered displayEvent() string
-//                    System.out.println(i + "." + "\n" + event.getEventDate(eventDate) + "\n");
-//
-//                    // increment the integer
-//                    i++;
-//                }
-//            }
-//
-//            // if the ArrayList of users is empty do this -
-//            else
-//            {
-//                //print this message
-//                System.out.println("No events occurred on this date.");
-//            }
-//        }
-//
-//        // for caught exceptions do this
-//        catch (Exception e)
-//        {
-//            System.out.println("\nInvalid entry, please start again -");
-//        }
-//
-//    }
-
 
 }
