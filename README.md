@@ -9,11 +9,7 @@
 
 **Objective**
 
-To create a Login screen with a clean, attractive, responsive and interactive UI.
-
-To add interactivity where possible, with cursor highlighting, form validation and an animated Sign In button.
-
-Use a sympathetic colour palette.
+Create a basic track and trace application using java that runs in the terminal/command line.
 
 
 **Steps**
@@ -27,27 +23,234 @@ Use a sympathetic colour palette.
 6. Run program - java Main
 ```
 
-**Overview**
-
 
 **Commit history**
 
-1. Use terminal to create new react app 'design-to-reality'. First commit and push to GitHub.
 
-2. Use terminal to install sass with yarn. Update file names, update import paths.
+**16 Jan, 2021 2 commits**
 
-3. Create login form and initial styling with css. Get logo svg and font cdn.
+Update README - add objective, steps and commit history
+Jack Healy 
 
-4. Progress styling login form add checkbox and styling. add hover. resize elements.
+Minor refactoring - remove redundant comments and move data folder so program runs in terminal   
+Jack Healy 
 
-5. Style buttons and main container div. Add gradient background. Update form text. Install react transitions addon.
+**11 Jan, 2021 5 commits**
 
-6. Animate Sign In button. Add mobile responsive view.
+Comment out broken method and add protected IO instance to IO methods  
+Jack Healy 
 
-7. Add email and password validation and add dynamic button response Validate email and password with time delayed feedback. Update button so it dynamically responds to validation check.
+Add README template  
+Jack Healy
 
-8. Update README and add screenshots.
+Update Controller.java  
+Josh Moore 
 
-9. Refactor, check mobile responsiveness.
+Merge remote-tracking branch 'origin/master'    
+Josh Moore
 
-10. Final commit - README update and final code check.
+Ignore case added to controller filters JM  
+Josh Moore
+
+**10 Jan, 2021 1 commit**
+
+Refined methods in Controller class for filter by date and filter by name and email address  
+vicky.williams
+
+
+**08 Jan, 2021 2 commits**
+
+Added Exit the program and run debug method to menu options  
+Jack Healy 
+
+Fix getEvents() and getUsersBYEstablishment() methods by removing DateTime formatter.  
+Jack Healy
+
+
+**07 Jan, 2021 2 commits**
+
+Updated Controller RG  
+Richard Glover 
+
+Changes to add new event    
+vicky.williams
+
+
+**06 Jan, 2021 6 commits**
+
+Add code to validate user date entries in IO class  
+Jack Healy 
+
+Merge branch 'master' of...      
+Jack Healy 
+
+Update debug method to print error/success messages and display results    
+Jack Healy
+
+Merge branch 'master' of...    
+vicky.williams 
+
+Filters added for date and name plus email address  
+vicky.williams
+
+hard code objects into debug method  
+Jack Healy
+
+**04 Jan, 2021 1 commit**
+
+RG and VW - new establishment in IO class  
+Richard Glover 
+
+**30 Dec, 2020 2 commits**
+
+Added menu option ot add new Event in IO class  
+vicky.williams
+
+Merge branch 'master' of...    
+vicky.williams
+
+**28 Dec, 2020 2 commits**
+
+add first filter method to present users who have visited a given establishment  
+Jack Healy
+
+Update IO.class  
+Josh Moore
+
+**23 Dec, 2020 2 commits**
+
+Merge branch 'master' of...    
+vicky.williams 
+
+print events and print establishment method created 22/12/20 JM & JH  
+Josh Moore 
+
+**22 Dec, 2020 1 commit**
+
+print events and print establishment method created 22/12/20 JM & JH  
+Josh Moore 
+
+**21 Dec, 2020 13 commits**
+
+Some comments added to Controller and IO class  
+Jack Healy 
+
+Modify controller so it is private and immutable. Add controller instance to IO constructor.  
+Jack Healy 
+
+Merge branch 'master' of...    
+vicky.williams 
+
+Event Getter created 21/12/20 JM  
+Josh Moore 
+
+Event Getter created 21/12/20 JM  
+Josh Moore 
+
+Merge branch 'master' of...    
+vicky.williams 
+
+Revert "Corrected spelling errors"    
+vicky.williams 
+
+Merge branch 'master' of...  
+Josh Moore 
+
+Update Controller.java  
+Josh Moore 
+
+Merge remote-tracking branch 'origin/master'  
+Richard Glover 
+
+Updated Controller RG  
+Richard Glover 
+
+Corrected spelling errors  
+vicky.williams 
+
+Update Controller.java  
+Josh Moore 
+
+**20 Dec, 2020 8 commits**
+
+Event Getter created 20/12/20 JM  
+Josh Moore 
+
+Refactor and tidy controller and fileloader class, add get object methods to Event class.  
+Jack Healy 
+
+modified controller  
+Jack Healy 
+
+Update to controller and addition of notDuplicate method  
+Jack Healy 
+
+Changes made 20/12/20 JM  
+Josh Moore 
+
+Changes made 20/12/20 JM  
+Josh Moore 
+
+**18 Dec, 2020 6 commits**
+
+Created Menu in IO class    
+vicky.williams 
+
+Changes made 18/12/20 JM, JH, VW, RG  
+Josh Moore 
+
+Merge remote-tracking branch 'origin/master'  
+Richard Glover 
+
+Updated Controller RG  
+Richard Glover 
+
+Update IO.java  
+Josh Moore 
+
+Update IO.java  
+Josh Moore 
+
+**17 Dec, 2020 4 commits**
+
+Update IO.java  
+Josh Moore
+
+Update IO.java  
+Josh Moore 
+
+Update Controller.java  
+Richard Glover 
+
+JM - beginning of the IO build  
+Josh Moore 
+
+**11 Dec, 2020 2 commits**
+
+Vomments added to code VW  
+vicky.williams 
+
+Complete initial User, Establishment & Event classes and test    
+Jack Healy
+
+**07 Dec, 2020 2 commits**
+
+Created User Class  
+Josh Moore 
+
+Created Event class  
+vicky.williams 
+
+**12 Nov, 2020 4 commits**
+
+Update .gitignore  
+Mike Simpson 
+
+Update README.md  
+Mike Simpson 
+
+Initial Commit of Code  
+Mike Simpson 
+
+Initial commit  
+Mike Simpson 
