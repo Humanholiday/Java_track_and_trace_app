@@ -13,6 +13,10 @@ public final class Controller
 
         // Attributes
  private String csv;
+    //ADDED AS A CLASS ATTRIBUTE SO CAN BE RE-USED.
+    // ADDED GETPROP USER.DIR SO ABSOLUTE PATH IS DEFINED IF COMPILED AND RUN FROM TERMINAL ON ANOTHER USERS MACHINE
+ private String estabCsv = System.getProperty("user.dir") + "/data/establishments.csv";
+ private String eventCsv = System.getProperty("user.dir") + "/data/events.csv";
 
    // Constructors
 
@@ -32,13 +36,13 @@ public final class Controller
     protected boolean addEstablishment(Establishment establishment) throws IOException {
 
         //ASSIGN FILENAME VARIABLE
-        String fileName = "data/establishments.csv";
+//        String fileName = "data/establishments.csv";
 
         //IF THE notDuplicate METHOD RETURNS TRUE DO THIS
-            if (notDuplicate(establishment.getName(), fileName)) {
+            if (notDuplicate(establishment.getName(), estabCsv)) {
 
                 //CREATE FILEWRITER OBJECT WHICH INCLUDES FILE PATH AND SETS APPEND TO TRUE
-                FileWriter csvWriter = new FileWriter(fileName, true);
+                FileWriter csvWriter = new FileWriter(estabCsv, true);
 
                 //ADD THE DETAILS OF THE ESTABLISHMENT TO THE CSV, FLUSH AND CLOSE THEN RETURN TRUE
                 csvWriter.append(establishment.getName());
@@ -68,13 +72,13 @@ public final class Controller
     protected boolean addEvent(Event event) throws IOException
     {
         //ASSIGN FILENAME VARIABLE
-        String fileName = "data/events.csv";
+//        String fileName = "data/events.csv";
 
         //IF THE notDuplicate() METHOD RETURNS TRUE DO THIS
-        if (notDuplicate(event.getEventID().toString(), fileName)) {
+        if (notDuplicate(event.getEventID().toString(), eventCsv)) {
 
             //CREATE FILEWRITER OBJECT WHICH INCLUDES FILE PATH AND SETS APPEND TO TRUE
-            FileWriter csvWriter = new FileWriter(fileName, true);
+            FileWriter csvWriter = new FileWriter(eventCsv, true);
 
             //ADD THE DETAILS OF THE EVENT TO THE CSV, FLUSH AND CLOSE THEN RETURN TRUE
             csvWriter.append(event.getEventID().toString());
@@ -119,45 +123,46 @@ public final class Controller
     //retrieve the establishments from the csv as eastablishment object
     protected ArrayList<Establishment> getEstablishments() {
 
-        // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
+            // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
+            ArrayList<String> csvText = FileLoader.loadCSVFile(estabCsv);
 
-        //CHECK IF THE ARRAYLIST IS EMPTY
-        assert csvText != null;
+            //CHECK IF THE ARRAYLIST IS EMPTY
+            assert csvText != null;
 
-        //CREATE AN EMPTY ESTABLISHMENTS ARRAYLIST
-        ArrayList<Establishment> establishments = new ArrayList<Establishment>();
+            //CREATE AN EMPTY ESTABLISHMENTS ARRAYLIST
+            ArrayList<Establishment> establishments = new ArrayList<Establishment>();
 
-        //LOOP THROUGH THE STRING ARRAYLIST
-        for (String line : csvText) {
+            //LOOP THROUGH THE STRING ARRAYLIST
+            for (String line : csvText) {
 
-            //IF THE CURRENT LINE IS NOT NULL DO THIS, IF IT IS NULL DO NOT EXECUTE
-            if (line != null) {
-                //SPLIT THE STRING INTO SEPARATE VALUES, SEPARATE BY COMMAS AND SAVE INTO A STRING ARRAY
-                String[] strings = line.split(",");
+                //IF THE CURRENT LINE IS NOT NULL DO THIS, IF IT IS NULL DO NOT EXECUTE
+                if (line != null) {
+                    //SPLIT THE STRING INTO SEPARATE VALUES, SEPARATE BY COMMAS AND SAVE INTO A STRING ARRAY
+                    String[] strings = line.split(",");
 
-                //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
-                String name = strings[0];
-                String firstAddressLine = strings[1];
-                String postcode = strings[2];
-                Integer occupancy = Integer.parseInt(strings[3]);
+                    //ADD THE SEPARATED STRINGS TO VARIABLES, CONVERTING TYPE IF NECESSARY
+                    String name = strings[0];
+                    String firstAddressLine = strings[1];
+                    String postcode = strings[2];
+                    Integer occupancy = Integer.parseInt(strings[3]);
 
-                //CREATE ESTABLISHMENT OBJECT USING ABOVE VARIABLES
-                Establishment establishment = new Establishment(name, firstAddressLine, postcode, occupancy);
+                    //CREATE ESTABLISHMENT OBJECT USING ABOVE VARIABLES
+                    Establishment establishment = new Establishment(name, firstAddressLine, postcode, occupancy);
 
-                //ADD ESTABLISHMENT OBJECT TO THE ESTABLISHMENTS ARRAYLIST
-                establishments.add(establishment);
+                    //ADD ESTABLISHMENT OBJECT TO THE ESTABLISHMENTS ARRAYLIST
+                    establishments.add(establishment);
+                }
             }
-        }
-        //RETURN THE ESTABLISHMENTS ARRAYLIST
-        return establishments;
+            //RETURN THE ESTABLISHMENTS ARRAYLIST
+            return establishments;
+
     }
 
     //retrieve the events from the csv
         protected ArrayList<Event> getEvents() {
 
             // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE› FILELOADER CLASS
-            ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+            ArrayList<String> csvText = FileLoader.loadCSVFile(eventCsv);
 
             //CHECK IF THE ARRAYLIST IS EMPTY
             assert csvText != null;
@@ -261,7 +266,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile(eventCsv);
         try {
             // Read through the csv file until the end
             for (String line : csvText) {
@@ -317,7 +322,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile(eventCsv);
         try {
             // Read through the csv file until the end
             for (String line : csvText) {
