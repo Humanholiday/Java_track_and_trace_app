@@ -178,7 +178,7 @@ public class IO
                 runSubMenu();
                 break;
             case 4:
-               printEvents(ioController);
+                printEvents(ioController);
                 break;
             case 5:
                 printEstablishments(ioController);

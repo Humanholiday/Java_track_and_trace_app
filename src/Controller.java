@@ -32,7 +32,7 @@ public final class Controller
     protected boolean addEstablishment(Establishment establishment) throws IOException {
 
         //ASSIGN FILENAME VARIABLE
-        String fileName = "src/data/establishments.csv";
+        String fileName = "data/establishments.csv";
 
         //IF THE notDuplicate METHOD RETURNS TRUE DO THIS
             if (notDuplicate(establishment.getName(), fileName)) {
@@ -68,7 +68,7 @@ public final class Controller
     protected boolean addEvent(Event event) throws IOException
     {
         //ASSIGN FILENAME VARIABLE
-        String fileName = "src/data/events.csv";
+        String fileName = "data/events.csv";
 
         //IF THE notDuplicate() METHOD RETURNS TRUE DO THIS
         if (notDuplicate(event.getEventID().toString(), fileName)) {
@@ -120,7 +120,7 @@ public final class Controller
     protected ArrayList<Establishment> getEstablishments() {
 
         // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
-        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/establishments.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/establishments.csv");
 
         //CHECK IF THE ARRAYLIST IS EMPTY
         assert csvText != null;
@@ -156,8 +156,8 @@ public final class Controller
     //retrieve the events from the csv
         protected ArrayList<Event> getEvents() {
 
-            // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE FILELOADER CLASS
-            ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
+            // CREATE STRING ARRAYLIST OBJECT OF THE CSV CONTENTS. USE LOADCSVFILE METHOD FORM THE› FILELOADER CLASS
+            ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
 
             //CHECK IF THE ARRAYLIST IS EMPTY
             assert csvText != null;
@@ -261,7 +261,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
         try {
             // Read through the csv file until the end
             for (String line : csvText) {
@@ -317,7 +317,7 @@ public final class Controller
     {
 
         // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile("src/data/events.csv");
+        ArrayList<String> csvText = FileLoader.loadCSVFile("data/events.csv");
         try {
             // Read through the csv file until the end
             for (String line : csvText) {
