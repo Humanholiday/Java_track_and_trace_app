@@ -270,12 +270,9 @@ public class IO
 
         // Set up the variables to store the results of the user input
         String name = "";
-        //String dob = "";
         LocalDate DateOfBirth = LocalDate.parse("1900-01-01");
         String email = "";
         String contactNumber = "";
-        //Integer age = -1;         //Don't need to enter this as it is calculated?
-        //String eventDate = "";
         LocalDate eventDate = LocalDate.parse("1900-01-01");
         String eventTime = "";
         Integer partySize = -1;
@@ -288,12 +285,6 @@ public class IO
         System.out.println("Enter lead party member name: ");
         String user = scanner.nextLine().trim();
         name = user;
-
-        // Get the dob from user input
-        //System.out.println("Enter dob in format yyyy-mm-dd: ");
-        //String dateOfBirth = scanner.nextLine();
-        //dob = dateOfBirth;
-        //LocalDate localDateDOB = LocalDate.parse(dob);      // Convert the string dob to a local date
 
         // Get the dob from user input and validate dob is not in the future
         LocalDate dob = LocalDate.parse("2000-12-10");
@@ -327,7 +318,6 @@ public class IO
             //IF CODE EXECUTES WITHOUT EXCEPTIONS AND DATE IS NOT IN FUTURE SET TO TRUE TO BREAK OUT OF LOOP
             dobValid = true;
         }
-
 
         // Get the email address from user input and validate it contains an @
         System.out.println("Enter email address: ");
@@ -372,9 +362,6 @@ public class IO
         // Get the event date from user input
         System.out.println("Enter event date in format yyyy-mm-dd: ");
         LocalDate dateOfEvent = LocalDate.parse("1900-01-01");
-        //String dateOfEvent = scanner.nextLine().trim();
-        //eventDate = dateOfEvent;
-        //LocalDate localDateEventDate = LocalDate.parse(eventDate);   // Convert the string dob to a local date
         dateOfEvent = LocalDate.parse(scanner.nextLine());
 
         // Get the event time from user input

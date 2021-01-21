@@ -264,51 +264,19 @@ public final class Controller
 
     protected void filterEventByUserAndEmail(String name, String emailAdd)
     {
+        try
+        {
+            //Read the csv file that contains the list of events
+            ArrayList<Event> events = getEvents();
 
-        // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile(eventCsv);
-        try {
-            // Read through the csv file until the end
-            for (String line : csvText) {
-                // the last line of the CSV file may be null, so check first!
-                if (line != null) {
-                    // The column split is either a comma or a new line
-                    String[] values = line.split("[,]");
-
-                    // In order of the Columns in CSV File
-                    String eventID = values[0];
-                    String username = values[1];
-                    LocalDate dob = LocalDate.parse(values[2]);
-                    String email = values[3];
-                    String contactNumber = values[4];
-                    Integer age = Integer.parseInt(values[5]);
-                    LocalDate eventDate = LocalDate.parse(values[6]);
-                    String eventTime = values[7];
-                    Integer partySize = Integer.parseInt(values[8]);
-                    String establishmentName = values[9];
-                    String firstLineAddress = values[10];
-                    String postcode = values[11];
-                    Integer maxOccupancy = Integer.parseInt(values[12]);
-
-                    // Parse the string event time as  local time
-                    LocalTime localEventTime = LocalTime.parse(eventTime);
-
-                    // If name and email address equals that in the scanner in the IO class then output the record. Added ignore case here to allow for typing errors.
-                    if (username.equalsIgnoreCase(name) && email.equalsIgnoreCase(emailAdd)) {
-                        System.out.println("Event - " + values[1] + ", " + values[6]  + ", " + values[7]  + ", " + values[9]  + ", " + values[8]);
-                    }
-
-                    // Add variables to user constructor
-                    User newUser = new User(username, dob, email, contactNumber);
-
-                    // Add variables to establishment constructor
-                    Establishment newEstablishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
-
-                    // Add variables to event constructor
-                    Event newEvent = new Event(newUser, eventDate, localEventTime, partySize, newEstablishment);
+            for (Event event:events)  // for each event listed in the array
+            {
+                // if the event in the csv file matches the name and email address variable passed in, then use the displayEvent method in the Event class to output the event
+                if(event.getUser().getName().equalsIgnoreCase(name) && event.getUser().getEmailAddress().equalsIgnoreCase(emailAdd))
+                {
+                    // Display the event
+                    System.out.println(event.displayEvent());
                 }
-
-
             }
         }
         catch (Exception e)
@@ -320,51 +288,21 @@ public final class Controller
 
     protected void filterEventByDate(LocalDate date)
     {
+        try
+        {
+            //Read the csv file that contains the list of events
+            ArrayList<Event> events = getEvents();
+            for (Event event:events)  // for each event listed in the array
+            {
+                //For some reason I can't get the date to pass into the if without creating a new variable
+                LocalDate newDate = event.getEventDate();
 
-        // Read the csv file
-        ArrayList<String> csvText = FileLoader.loadCSVFile(eventCsv);
-        try {
-            // Read through the csv file until the end
-            for (String line : csvText) {
-                // the last line of the CSV file may be null, so check first!
-                if (line != null) {
-                    // The column split is either a comma or a new line
-                    String[] values = line.split("[,]");
-
-                    // In order of the Columns in CSV File
-                    String eventID = values[0];
-                    String username = values[1];
-                    LocalDate dob = LocalDate.parse(values[2]);
-                    String email = values[3];
-                    String contactNumber = values[4];
-                    Integer age = Integer.parseInt(values[5]);
-                    LocalDate eventDate = LocalDate.parse(values[6]);
-                    String eventTime = values[7];
-                    Integer partySize = Integer.parseInt(values[8]);
-                    String establishmentName = values[9];
-                    String firstLineAddress = values[10];
-                    String postcode = values[11];
-                    Integer maxOccupancy = Integer.parseInt(values[12]);
-
-                    // Parse the string event time as  local time
-                    LocalTime localEventTime = LocalTime.parse(eventTime);
-
-                    // If Event Date equals that in the scanner in the IO class then output the record
-                    if (eventDate.equals(date)) {
-                        System.out.println("Event - " + values[1] + ", " + values[6]  + ", " + values[7]  + ", " + values[9]  + ", " + values[8]);
-                    }
-
-                    // Add variables to user constructor
-                    User newUser = new User(username, dob, email, contactNumber);
-
-                    // Add variables to establishment constructor
-                    Establishment newEstablishment = new Establishment(establishmentName, firstLineAddress, postcode, maxOccupancy);
-
-                    // Add variables to event constructor
-                    Event newEvent = new Event(newUser, eventDate, localEventTime, partySize, newEstablishment);
+                // if the event in the csv file matches the name and email address variable passed in, then use the displayEvent method in the Event class to output the event
+                if(newDate.equals(date))
+                {
+                    // Display the event
+                    System.out.println(event.displayEvent());
                 }
-
-
             }
         }
         catch (Exception e)
