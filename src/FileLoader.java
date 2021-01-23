@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class FileLoader {
 
     /*
-     *  A method to load a CSV file and return an array of Strings to be processed later
+     *  A method to load a CSV file and return an array of Strings to be processed later - JH
      */
     public static ArrayList<String> loadCSVFile(String filename)
     {

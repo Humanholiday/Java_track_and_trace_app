@@ -10,7 +10,8 @@ public class IO
     // Attributes
     boolean exit = false;
     //CONTROLLER OBJECT IS ATTRIBUTE OF IO CLASS
-    private final Controller ioController;
+    // - WAS PRIVATE BUT MADE PROTECTED SO IT CAN BE ACCESSED FROM THE DEBUG METHOD - JH
+    protected final Controller ioController;
 
 
     // Constructor
@@ -52,7 +53,8 @@ public class IO
         System.out.println("3) Filters");
         System.out.println("4) Print Events");
         System.out.println("5) Print Establishments");
-        System.out.println("6) Exit the program and run debug method");
+        System.out.println("6) Exit the program");
+        System.out.println("7) Run debug method");
     }
 
     // Sub menu options
@@ -112,7 +114,7 @@ public class IO
         // Set variable to a number that won't conflict with the numbers of our menu options
         int choice = -1;
 
-        while(choice < 0 || choice > 6)
+        while(choice < 0 || choice > 7)
         {
             try
             {
@@ -186,6 +188,9 @@ public class IO
             case 6:
                 exit = true;
                 System.out.print("Goodbye \n");
+                break;
+            case 7:
+                Main.debug(new IO());
                 break;
             default:
                 System.out.print("Error has occurred");
@@ -428,8 +433,43 @@ public class IO
             e.printStackTrace();
         }
 
-        // Message to the user to tell them that a new event has been added
-        System.out.println("New event for " + name + " on " + dateOfEvent + " at " + establishmentName + " for " + partySize + " people has now been added");
+        try
+        {
+            //SAVE RESULT IN A BOOLEAN
+            boolean eventResult = ioController.addEvent(newEvent);
+            boolean estabResult = ioController.addEstablishment(newEstablishment);
+
+            //IF BOOLEAN IS TRUE, ESTABLISHMENT HAS BEEN ADDED
+            if(eventResult && estabResult) {
+                // Message to the user to tell them that a new event has been added
+                System.out.println("New event for " + name +
+                        " on " + dateOfEvent +
+                        " at " + establishmentName +
+                        " for " + partySize +
+                        " people has now been added");
+
+                System.out.println("New establishment, " + newEstablishment.getName() +
+                        " has now been added" + "\n");
+            }
+
+            //IF BOOLEAN IS FALSE, ESTABLISHMENT IS A DUPLICATE
+            if(!eventResult && !estabResult)
+            {
+
+                System.out.println("Event for " + newEvent.getUser().getName() +
+                        " on " + newEvent.getEventDate() +
+                        " at " + newEvent.getEstablishment().getName() +
+                        " is a duplicate entry and has not been added" + "\n");
+
+                System.out.println("Establishment " + newEstablishment.getName() +
+                        " is a duplicate entry and has not been added" + "\n");
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -467,19 +507,24 @@ public class IO
         // Add variables to establishment constructor
         Establishment newEstablishment = new Establishment(establishmentName, firstLineAdd, postCode, occ);
 
-        // try to add the new establishment to the establishments.csv
-        Controller controller = new Controller();
         try
         {
-            ioController.addEstablishment(newEstablishment);
+            //SAVE RESULT IN A BOOLEAN
+            boolean result = ioController.addEstablishment(newEstablishment);
+
+            //IF BOOLEAN IS TRUE, ESTABLISHMENT HAS BEEN ADDED
+            if(result) {
+                System.out.println("New establishment, " + newEstablishment.getName() + " created" + "\n");
+            }
+            //IF BOOLEAN IS FALSE, ESTABLISHMENT IS A DUPLICATE
+            if(!result)
+            {
+                System.out.println("Establishment " + newEstablishment.getName() + " is a duplicate entry and has not been added" + "\n");
+            }
         } catch (IOException e)
         {
             e.printStackTrace();
         }
-
-        // Message to the user to tell them that a new event has been added
-        System.out.println("New establishment, " + establishmentName + ", has been added");
-
     }
 
 

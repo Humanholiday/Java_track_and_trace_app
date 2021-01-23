@@ -11,12 +11,12 @@ public final class Controller
 
 //   ATTRIBUTES AND METHODS PRIVATE AND IMMUTABLE
 
-        // Attributes
+// Attributes
  private String csv;
     //ADDED AS A CLASS ATTRIBUTE SO CAN BE RE-USED.
-    // ADDED GETPROP USER.DIR SO ABSOLUTE PATH IS DEFINED IF COMPILED AND RUN FROM TERMINAL ON ANOTHER USERS MACHINE
- private String estabCsv = System.getProperty("user.dir") + "/data/establishments.csv";
- private String eventCsv = System.getProperty("user.dir") + "/data/events.csv";
+    // ADDED GET PROP USER.DIR SO ABSOLUTE PATH IS DEFINED IF COMPILED AND RUN FROM TERMINAL ON ANOTHER USERS MACHINE
+ private final String estabCsv = System.getProperty("user.dir") + "/data/establishments.csv";
+ private final String eventCsv = System.getProperty("user.dir") + "/data/events.csv";
 
    // Constructors
 
@@ -207,7 +207,7 @@ public final class Controller
             return events;
         }
 
-    //****** NEW - METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE - JH
+    //******  METHOD TO CHECK IF ENTERED ESTABLISHMENT/EVENT ALREADY EXISTS IN THE CSV FILE - JH
 
     private static boolean notDuplicate(String input, String filename) throws IOException {
 
@@ -226,14 +226,14 @@ public final class Controller
                 //SPLIT THE STRING INTO SEPARATE VALUES, SEPARATE BY COMMAS AND SAVE INTO A STRING ARRAY
                 String[] values = line.split(",");
 
-                //IF VALUES[0] (THE STORED EVENT ID) IS THE SAME AS THE NEW EVENT ID RETURN FALSE
+                //IF VALUES[0] (THE STORED EVENT ID OR ESTABLISHMENT NAME) IS THE SAME AS THE NEW EVENT ID RETURN FALSE
                 if (values[0].equalsIgnoreCase(input))
                 {
                     return false;
                 }
             }
         }
-        // RETURN TRUE IF THE EVENT ID'S ARE DIFFERENT
+        // RETURN TRUE IF EVENT IDS OR ESTABLISHMENT NAMES ARE DIFFERENT
         return true;
     }
 

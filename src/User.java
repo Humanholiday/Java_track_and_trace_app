@@ -19,8 +19,8 @@ public class User
         this.dob = dob;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-        // CALCULATES THE YEARS BETWEEN DOB AND THE CURRENT DATE AND STORES AS AGE VARIABLE
-        this.age = Period.between(dob, LocalDate.now()).getYears(); //JACK
+        // CALCULATES THE YEARS BETWEEN DOB AND THE CURRENT DATE AND STORES AS AGE VARIABLE - JH
+        this.age = Period.between(dob, LocalDate.now()).getYears();
     }
 
     // methods
@@ -70,7 +70,7 @@ public class User
     public String displayUser()
     {
         // Print out user details in required format
-        // Used String.format to create a sting that can be declared in a System.out.println in order to print the information from User in the correct format - VW
+        // Used String.format to create a string that can be declared in a System.out.println in order to print the information from User in the correct format - VW
         return String.format("Name: %s\n\t" +     // %s represents a string
                         "Date of Birth: %s\n\t" +
                         "Email: %s\n\t" +

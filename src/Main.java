@@ -6,21 +6,16 @@ import java.time.LocalTime;
 
 public class Main {
 
-    //MAIN METHOD FOR APPLICATION - JH
+    //MAIN METHOD FOR APPLICATION
 
     public static void main(String[] args) throws IOException
     {
-
             IO menu = new IO();
             menu.runMenu();
-
-            IO debugIO  = new IO();
-            debug(debugIO);
-
     }
 
 
-    // DEBUG METHOD FOR APPLICATION
+    // DEBUG METHOD FOR APPLICATION - CALLED FROM APPLICATION MENU
 
     public static void debug(IO io)
     {
@@ -362,6 +357,78 @@ public class Main {
             { System.out.println("Event object at index " + i + " is " + e.getMessage() + "\n"); }
 
         }
+
+        //****** TESTING CSV INPUT
+
+        //CREATE A DEBUG EVENT AND ESTABLISHMENT TO ADD TO CSV
+
+           Event debugEvent = new Event(
+                   users[6],
+                   LocalDate.now(),
+                   LocalTime.now(),
+                   400,
+                   establishments[6]);
+
+        Establishment debugEstablishment = new Establishment(
+                "Some Down-in-one Place",
+                "1 Archbishop Street",
+                "FA8 3KE",
+                5);
+
+        //ADD EVENT  TO CSV WITH CURRENT LOCAL DATE TIME
+        // THIS SHOULD ADD TO CSV AND PRINT A SUCCESS MESSAGE
+
+        try
+        {
+            //ADD EVENT TO CSV
+            boolean eventResult = io.ioController.addEvent(debugEvent);
+
+            //IF RESULT IS TRUE, PRINT A SUCCESS MESSAGE
+            if(eventResult) {
+                System.out.println(event + " " + debugEvent.getEventID() + " created" + "\n");
+            }
+            //IF RESULT IS FALSE PRINT A DUPLICATE ENTRY MESSAGE
+            if(!eventResult)
+            {
+                System.out.println("Event " + debugEvent.getEventID() + " is a duplicate entry and has not been added" + "\n");
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.out.println(event + " " + e.getMessage() + "\n");
+        }
+
+        //ADD EVENT A SECOND TIME
+        // THIS SHOULD FAIL AND PRINT A MESSAGE TO SAY THEY ARE DUPLICATE ENTRIES
+
+        try
+        {
+            //ADD EVENT TO CSV
+            boolean eventResult = io.ioController.addEvent(debugEvent);
+
+            //IF RESULT IS TRUE, PRINT A SUCCESS MESSAGE
+            if(eventResult) {
+                System.out.println(event + " " + debugEvent.getEventID() + " created" + "\n");
+            }
+            //IF RESULT IS FALSE PRINT A DUPLICATE ENTRY MESSAGE
+            if(!eventResult)
+            {
+                System.out.println("Event " + debugEvent.getEventID() + " is a duplicate entry and has not been added" + "\n");
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.out.println(event + " " + e.getMessage() + "\n");
+        }
+
+
+
+
+
+
+
 
 
 //

@@ -64,11 +64,10 @@ public class Event
     {
         return this.eventID;
     }
-    //public String getEventDate()
-    //{
-    //    return this.eventDate.format(formatter);   //******** NEW - FORMAT DATE
-    //}
-    public LocalDate getEventDate() { return this.eventDate; }
+    public LocalDate getEventDate()
+    {
+        return this.eventDate;
+    }
     public LocalTime getEventTime()
     {
         return this.eventTime;
@@ -84,16 +83,8 @@ public class Event
     public void setEventID(int eventID) { this.eventID = eventID; }
     public void setEventDate(LocalDate eventDate) { this.eventDate = eventDate; }
     public void setPartyNumber(int partyNumber) { this.partyNumber = partyNumber; }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
-
-    public void setEstablishment(Establishment establishment)
-    {
-        this.establishment = establishment;
-    }
+    public void setUser(User user) { this.user = user; }
+    public void setEstablishment(Establishment establishment) { this.establishment = establishment; }
 
     //views
 
@@ -122,14 +113,4 @@ public class Event
 
     };
 
-    public void controllerStore()
-    {
-        // pass info in this class to controller to store the information
-    }
-
-
-    public static void main(String[] args)
-    {
-
-    }
 }
