@@ -1,4 +1,4 @@
-# Group 2
+# Group 2 - CSC8427-track-and-trace
 
 ## By Jack Healy, Vicky Williams, Richard Glover, Josh Moore
 
@@ -26,29 +26,49 @@ Create a basic track and trace application using java that runs in the terminal/
 
 **Commit history**
 
+**23 Jan, 2021 5 commits**
+
+update README  
+code and comment formatting  
+add exception handling to debug event.csv test method  
+Code formatting and comment editing. Add events.csv test to debug method  
+Remove redundant comments and some genral reformatting. Add event.csv test to debug method  
+Jack Healy 
+
+
+**21 Jan, 2021 2 commits**
+
+vw  
+Controller and IO changes  
+vicky.williams 
+
+
+**19 Jan, 2021 3 commits**
+
+Refactor csv filepath/location for correct operation    
+move csv folder second commit  
+Move csv folder  
+Jack Healy 
+
+**17 Jan, 2021 1 commit**
+
+Removed a method from the IO which I had copied and pasted to use but left in...  
+Josh Moore
 
 **16 Jan, 2021 2 commits**
 
-Update README - add objective, steps and commit history
-Jack Healy 
-
+Update README - add objective, steps and commit history  
 Minor refactoring - remove redundant comments and move data folder so program runs in terminal   
 Jack Healy 
 
 **11 Jan, 2021 5 commits**
 
-Comment out broken method and add protected IO instance to IO methods  
-Jack Healy 
-
+Comment out broken method and add protected IO instance to IO methods    
 Add README template  
 Jack Healy
 
 Update Controller.java  
-Josh Moore 
-
 Merge remote-tracking branch 'origin/master'    
-Josh Moore
-
 Ignore case added to controller filters JM  
 Josh Moore
 
@@ -61,8 +81,6 @@ vicky.williams
 **08 Jan, 2021 2 commits**
 
 Added Exit the program and run debug method to menu options  
-Jack Healy 
-
 Fix getEvents() and getUsersBYEstablishment() methods by removing DateTime formatter.  
 Jack Healy
 
@@ -75,21 +93,14 @@ Richard Glover
 Changes to add new event    
 vicky.williams
 
-
 **06 Jan, 2021 6 commits**
 
-Add code to validate user date entries in IO class  
-Jack Healy 
-
+Add code to validate user date entries in IO class    
 Merge branch 'master' of...      
-Jack Healy 
-
 Update debug method to print error/success messages and display results    
 Jack Healy
 
 Merge branch 'master' of...    
-vicky.williams 
-
 Filters added for date and name plus email address  
 vicky.williams
 
@@ -104,8 +115,6 @@ Richard Glover
 **30 Dec, 2020 2 commits**
 
 Added menu option ot add new Event in IO class  
-vicky.williams
-
 Merge branch 'master' of...    
 vicky.williams
 
@@ -133,8 +142,6 @@ Josh Moore
 **21 Dec, 2020 13 commits**
 
 Some comments added to Controller and IO class  
-Jack Healy 
-
 Modify controller so it is private and immutable. Add controller instance to IO constructor.  
 Jack Healy 
 
@@ -142,26 +149,18 @@ Merge branch 'master' of...
 vicky.williams 
 
 Event Getter created 21/12/20 JM  
-Josh Moore 
-
 Event Getter created 21/12/20 JM  
 Josh Moore 
 
 Merge branch 'master' of...    
-vicky.williams 
-
 Revert "Corrected spelling errors"    
 vicky.williams 
 
 Merge branch 'master' of...  
-Josh Moore 
-
 Update Controller.java  
 Josh Moore 
 
 Merge remote-tracking branch 'origin/master'  
-Richard Glover 
-
 Updated Controller RG  
 Richard Glover 
 
@@ -177,17 +176,11 @@ Event Getter created 20/12/20 JM
 Josh Moore 
 
 Refactor and tidy controller and fileloader class, add get object methods to Event class.  
-Jack Healy 
-
 modified controller  
-Jack Healy 
-
 Update to controller and addition of notDuplicate method  
 Jack Healy 
 
 Changes made 20/12/20 JM  
-Josh Moore 
-
 Changes made 20/12/20 JM  
 Josh Moore 
 
@@ -200,22 +193,16 @@ Changes made 18/12/20 JM, JH, VW, RG
 Josh Moore 
 
 Merge remote-tracking branch 'origin/master'  
-Richard Glover 
-
 Updated Controller RG  
 Richard Glover 
 
 Update IO.java  
-Josh Moore 
-
 Update IO.java  
 Josh Moore 
 
 **17 Dec, 2020 4 commits**
 
 Update IO.java  
-Josh Moore
-
 Update IO.java  
 Josh Moore 
 
@@ -244,13 +231,7 @@ vicky.williams
 **12 Nov, 2020 4 commits**
 
 Update .gitignore  
-Mike Simpson 
-
 Update README.md  
-Mike Simpson 
-
 Initial Commit of Code  
-Mike Simpson 
-
 Initial commit  
 Mike Simpson 
