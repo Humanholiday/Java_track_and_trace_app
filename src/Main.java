@@ -383,7 +383,7 @@ public class Main {
 
 
             //ADD RANDOM EVENT TO CSV
-            // THIS SHOULD ADD TO CSV AND PRINT A SUCCESS MESSAGE
+            // THIS SHOULD ADD TO CSV AND PRINT A SUCCESS MESSAGE UNLESS AN EXCEPTION IS THROWN
             //ADD EVENT TO CSV
             boolean eventResult = io.ioController.addEvent(debugEvent);
 

@@ -22,7 +22,11 @@ public class IO
         this.ioController = new Controller();
     }
 
-    // Methods
+
+    // METHODS
+
+
+    //********** COMMAND LINE MENU METHODS **************
 
 
     // Header for the menu
@@ -224,6 +228,9 @@ public class IO
         }
     }
 
+
+    //********** PRINT METHODS **************
+
     //Print events method
     private void printEvents(Controller ioController)
     {
@@ -266,6 +273,9 @@ public class IO
     }
 
 
+    //********** ADD NEW EVENT/ESTABLISHMENT METHODS **************
+
+    //USER INPUTS NEW EVENT
 
     protected void newEvent()
     {
@@ -451,6 +461,8 @@ public class IO
 
     }
 
+    //USER INPUTS NEW ESTABLISHMENT
+
     protected void newEstablishment()
     {
 
@@ -506,10 +518,11 @@ public class IO
     }
 
 
-    //***** FILTERS *****//
+    //***** FILTER METHODS *****//
 
 
     // Print users who have visited a given establishment
+
     private void printUsersByEstablishment(Controller ioController)
     {
 
@@ -560,6 +573,7 @@ public class IO
     }
 
     // Filter Events that a user has been recorded ay by name and email
+
     private void printEventsByUserAndEmail(Controller ioController)
     {
 
@@ -577,6 +591,7 @@ public class IO
 
 
     // Filter Events that a user has been recorded ay by name and email
+
     private void printEventsByDate(Controller ioController)
     {
 
