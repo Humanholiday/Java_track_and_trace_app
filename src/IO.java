@@ -410,15 +410,6 @@ public class IO
         Event newEvent = new Event (newUser, dateOfEvent, localTimeOfEvent, partySize, newEstablishment);
 
         // try to add the new establishment to the establishments.csv
-        try
-        {
-            ioController.addEvent(newEvent);
-            //ALSO ADD ESTABLISHMENT TO ESTABLISHMENTS.CSV AS NEW ENTRY
-            ioController.addEstablishment(newEstablishment);
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
 
         try
         {

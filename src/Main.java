@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 // NEW MAIN CLASS CREATED IN ORDER TO RUN TESTS
 
@@ -358,78 +360,77 @@ public class Main {
 
         }
 
-        //****** TESTING CSV INPUT
+        //****** TESTING CSV INPUT - JH
 
-        //CREATE A DEBUG EVENT AND ESTABLISHMENT TO ADD TO CSV
+        //CREATE A DEBUG EVENT  TO ADD TO CSV
 
-           Event debugEvent = new Event(
-                   users[6],
-                   LocalDate.now(),
-                   LocalTime.now(),
-                   400,
-                   establishments[6]);
+        //GENERATE A RANDOM NUMBER FOR THE USER AND ESTABLISHMENT COLLECTIONS
+        Random randomGenerator  = new Random();
+        int userIndex = randomGenerator.nextInt(users.length);
+        int estabIndex = randomGenerator.nextInt(establishments.length);
 
-        Establishment debugEstablishment = new Establishment(
-                "Some Down-in-one Place",
-                "1 Archbishop Street",
-                "FA8 3KE",
-                5);
-
-        //ADD EVENT  TO CSV WITH CURRENT LOCAL DATE TIME
-        // THIS SHOULD ADD TO CSV AND PRINT A SUCCESS MESSAGE
 
         try
         {
+
+            //CREATE A RANDOM EVENT USING A RANDOM USER, ESTABLISHMENT, PARTYSIZE AND THE CURRENT DATE AND TIME
+            Event debugEvent = new Event(
+                    users[userIndex],
+                    LocalDate.now(),
+                    LocalTime.now(),
+                    ThreadLocalRandom.current().nextInt(10, 200 + 1),
+                    establishments[estabIndex]);
+
+
+            //ADD RANDOM EVENT TO CSV
+            // THIS SHOULD ADD TO CSV AND PRINT A SUCCESS MESSAGE
             //ADD EVENT TO CSV
             boolean eventResult = io.ioController.addEvent(debugEvent);
 
             //IF RESULT IS TRUE, PRINT A SUCCESS MESSAGE
             if(eventResult) {
-                System.out.println(event + " " + debugEvent.getEventID() + " created" + "\n");
+                System.out.println("Event " + debugEvent.getEventID() + " created" + "\n");
             }
             //IF RESULT IS FALSE PRINT A DUPLICATE ENTRY MESSAGE
             if(!eventResult)
             {
                 System.out.println("Event " + debugEvent.getEventID() + " is a duplicate entry and has not been added" + "\n");
             }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            System.out.println(event + " " + e.getMessage() + "\n");
-        }
 
-        //ADD EVENT A SECOND TIME
+
+        //ADD SAME [EVENT A SECOND TIME
         // THIS SHOULD FAIL AND PRINT A MESSAGE TO SAY THEY ARE DUPLICATE ENTRIES
 
-        try
-        {
             //ADD EVENT TO CSV
-            boolean eventResult = io.ioController.addEvent(debugEvent);
+            boolean eventResult2 = io.ioController.addEvent(debugEvent);
 
             //IF RESULT IS TRUE, PRINT A SUCCESS MESSAGE
-            if(eventResult) {
+            if(eventResult2) {
                 System.out.println(event + " " + debugEvent.getEventID() + " created" + "\n");
             }
             //IF RESULT IS FALSE PRINT A DUPLICATE ENTRY MESSAGE
-            if(!eventResult)
+            if(!eventResult2)
             {
                 System.out.println("Event " + debugEvent.getEventID() + " is a duplicate entry and has not been added" + "\n");
             }
         }
-        catch (IOException e)
+        //SOME USERS AND ESTABLISHMENTS USE BOUNDARY AND ERRONEOUS VALUES, THESE WILL CREATE NULL EVENT OBJECTS
+        //IF EVENT OBJECT IS NULL, PRINT EXCEPTION MESSAGE WITH USER AND ESTABLISHMENT INDEXES
+        catch (Exception e)
         {
-            e.printStackTrace();
-            System.out.println(event + " " + e.getMessage() + "\n");
+
+            System.out.println("User object at index " + userIndex +
+                    " and Establishment object at index " + estabIndex +
+                    " have created a " + e.getMessage() +
+                    " random Event object due to boundary and erroneous test values, please retry debug method");
+
         }
 
 
 
 
 
-
-
-
+        //******* SOME UNIT TEST CODE USED DURING PROJECT
 
 //
 //        //CREATE AN ESTABLISHMENT OBJECT - JH
